@@ -1,6 +1,7 @@
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/component/fixed_list_tile.dart';
@@ -37,9 +38,9 @@ class ProfileScreen extends StatelessWidget {
                   Positioned(
                     child: IconButton(
                         onPressed: () {},
-                        icon: const Icon(
+                        icon:  Icon(
                           EvaIcons.camera,
-                          size: 30,
+                          size: 30.sp,
                           color: K.mainColor,
                         )),
                     bottom: 0,

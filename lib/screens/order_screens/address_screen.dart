@@ -18,7 +18,8 @@ class AddressScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            padding: EdgeInsets.symmetric
+              (horizontal: 8.0.w ,vertical: 3.0.h),
             child: Column(
               children: [
                 FixedTextField(

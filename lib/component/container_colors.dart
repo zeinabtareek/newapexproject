@@ -9,11 +9,11 @@ class ContainerColors extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric
-        (horizontal: 2.0.w ,vertical: 1.0.h),
+        (horizontal: 5.0.w ,vertical: 5.0.h),
 
       child: Container(
-        height: 15.h,
-        width: 10.w,
+        height: 50.h,
+        width: 25.w,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(100.0),

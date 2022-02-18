@@ -2,7 +2,6 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/component/appbar.dart';
 
@@ -42,16 +41,14 @@ class PaymentScreen extends StatelessWidget {
               K.sizedBoxH,
               Text(
                 'Payment Methods , multiple options to select what seems compatible for you',
-                style: GoogleFonts.aBeeZee(
-                  textStyle: const TextStyle(color: K.blackColor),
-                ),
+                style: const TextStyle(color: K.blackColor),
+
               ),
               Text(
                 '\nChoose your payment method',
-                style: GoogleFonts.aBeeZee(
-                  textStyle: const TextStyle(color: K.grayColor),
+                style:  const TextStyle(color: K.grayColor),
                 ),
-              ),
+
               K.sizedBoxH,
               ListTile(
                 shape: RoundedRectangleBorder(
@@ -66,11 +63,10 @@ class PaymentScreen extends StatelessWidget {
                     ),
                     Text(
                       '\nCash on Delivery',
-                      style: GoogleFonts.aBeeZee(
-                          textStyle: TextStyle(
+                      style: TextStyle(
                               color: K.blackColor.withOpacity(.8),
-                              fontWeight: FontWeight.w500)),
-                    ),
+                              fontWeight: FontWeight.w500),)
+
                   ],
                 ),
                 leading: Radio(

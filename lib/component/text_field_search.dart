@@ -10,8 +10,8 @@ class TextFieldSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 80.h,
-        width: 150.w,
+        height: 50.h,
+        width: 400.w,
         child: TextField(
           onChanged: onchange,
           cursorColor: K.mainColor,
@@ -21,7 +21,7 @@ class TextFieldSearch extends StatelessWidget {
               Icons.search,
               color: K.mainColor,
             ),
-            hintText: "Search product",
+            hintText: "     Search product",
             hintStyle: TextStyle(color: K.grayColor),
             fillColor: K.grayColor.withOpacity(.15),
             filled: true,

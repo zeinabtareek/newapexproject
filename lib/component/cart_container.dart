@@ -29,7 +29,7 @@ class Cart extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: K.whiteColor,
       child: SizedBox(
-        height: 200.h,
+        height: 130.h,
         child: Row(
           children: [
             ClipRRect(
@@ -42,35 +42,35 @@ class Cart extends StatelessWidget {
               child: Image.asset(
                 image!,
                 fit: BoxFit.cover,
-                width: 55.w,
+                width: 140.w,
               ),
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 10),
-                    child: AutoSizeText(
+              child: Padding(
+                padding: EdgeInsets.symmetric
+                  (horizontal: 8.0.w ,vertical: 8.0.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(
                       label!,
                       style: TextStyle(
-                          fontSize: 7.sp,
+                          fontSize: 18.sp,
                           color: K.blackColor,
-                          fontFamily: "Poppins-Bold"),
+                          fontWeight: FontWeight.w600),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 5),
-                    child: AutoSizeText(
+                    AutoSizeText(
                       price!,
+
                       style: TextStyle(
-                          fontSize: 6.sp,
+                          fontSize: 15.sp,
                           color: K.mainColor,
-                          fontFamily: "Poppins-Bold"),
+                          height: 1.9.h,
+                          fontWeight: FontWeight.w600),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -80,8 +80,8 @@ class Cart extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: clear,
-                    icon: const Icon(MdiIcons.cartRemove,
-                        size: 25, color: K.mainColor),
+                    icon:  Icon(MdiIcons.cartRemove,
+                        size: 20.sp, color: K.mainColor),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
@@ -91,18 +91,19 @@ class Cart extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: decrease,
-                          icon: const Icon(MdiIcons.minusCircle,
-                              size: 30, color: K.mainColor),
+                          icon:  Icon(MdiIcons.minusCircle,
+                              size: 25.sp,
+                              color: K.mainColor),
                         ),
                         const Text(
                           '2',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.normal),
                         ),
                         IconButton(
                           onPressed: increase,
-                          icon: const Icon(
+                          icon:  Icon(
                             MdiIcons.plusCircle,
-                            size: 30,
+                            size: 25.sp,
                             color: K.mainColor,
                           ),
                         ),

@@ -30,13 +30,13 @@ class CheckOutScreen extends StatelessWidget {
             children: [
               Text(
                 'Checkout',
-                style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
               K.sizedBoxH,
               Stack(
                 children: [
                   SizedBox(
-                    height: 400.h,
+                    height: 200.h,
                     width: 500.w,
                     child: Card(
                       color: K.borderColor,
@@ -51,7 +51,7 @@ class CheckOutScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 5.0.w, vertical: 5.0.h),
+                                horizontal: 8.0.w, vertical: 5.0.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +61,7 @@ class CheckOutScreen extends StatelessWidget {
                                   'Shipping Information',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 8.sp),
+                                      fontSize: 16.sp),
                                 ),
                                 K.sizedBoxH,
                                 Wrap(
@@ -70,7 +70,7 @@ class CheckOutScreen extends StatelessWidget {
                                       child: Icon(
                                         EvaIcons.personOutline,
                                         color: Colors.black.withOpacity(.7),
-                                        size: 10.w,
+                                        size: 20.w,
                                       ),
                                       onTap: () {
                                         Get.to(ProfileScreen());
@@ -80,7 +80,7 @@ class CheckOutScreen extends StatelessWidget {
                                     Text('Cameron Williamson',
                                         style: TextStyle(
                                           color: Colors.black.withOpacity(.7),
-                                          fontSize: 6.sp,
+                                          fontSize: 14.sp,
                                           fontWeight: FontWeight.w500,
                                         ))
                                   ],
@@ -91,14 +91,14 @@ class CheckOutScreen extends StatelessWidget {
                                     Icon(
                                       EvaIcons.phoneCallOutline,
                                       color: Colors.black.withOpacity(.7),
-                                      size: 10.w,
+                                      size: 20.w,
                                     ),
                                     K.sizedBoxW,
                                     Text(
                                       '(405) 555-0120 ',
                                       style: TextStyle(
                                         color: Colors.black.withOpacity(.7),
-                                        fontSize: 6.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
@@ -110,16 +110,16 @@ class CheckOutScreen extends StatelessWidget {
                                     Icon(
                                       Icons.location_pin,
                                       color: Colors.black.withOpacity(.7),
-                                      size: 10.w,
+                                      size: 20.w,
                                     ),
                                     K.sizedBoxW,
                                     SizedBox(
-                                      width: 100.w,
+                                      width: 300.w,
                                       child: Text(
                                         ' 8502 Perston Rd.inglewoold Main 98380.dunken St . near to Gazoline berline station',
                                         style: TextStyle(
                                           color: Colors.black.withOpacity(.7),
-                                          fontSize: 6.sp,
+                                          fontSize: 14.sp,
                                           fontWeight: FontWeight.w500,
                                         ),
                                         maxLines: 3,
@@ -148,7 +148,7 @@ class CheckOutScreen extends StatelessWidget {
                       child: Icon(
                         EvaIcons.edit2Outline,
                         color: Colors.white,
-                        size: 8.sp,
+                        size: 20.sp,
                       ),
                     ),
                   ),
@@ -158,8 +158,7 @@ class CheckOutScreen extends StatelessWidget {
               Stack(
                 children: [
                   SizedBox(
-                    // margin: EdgeInsets.only(bottom: 15),
-                    height: 300.h,
+                    height: 150.h,
                     width: 500.w,
                     child: Card(
                       color: K.mainColor,
@@ -174,7 +173,7 @@ class CheckOutScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 5.0.w, vertical: 5.0.h),
+                                horizontal: 8.0.w, vertical: 5.0.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -185,7 +184,7 @@ class CheckOutScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: K.whiteColor,
-                                      fontSize: 8.sp),
+                                      fontSize: 18.sp),
                                 ),
                                 K.sizedBoxH,
                                 Wrap(
@@ -193,14 +192,14 @@ class CheckOutScreen extends StatelessWidget {
                                     Icon(
                                       EvaIcons.printer,
                                       color: K.whiteColor,
-                                      size: 10.w,
+                                      size: 25.w,
                                     ),
                                     K.sizedBoxW,
                                     Text(
                                       '561056729001767',
                                       style: TextStyle(
                                         color: K.whiteColor,
-                                        fontSize: 6.sp,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
@@ -213,7 +212,7 @@ class CheckOutScreen extends StatelessWidget {
                                       '12 /26',
                                       style: TextStyle(
                                         color: K.whiteColor,
-                                        fontSize: 8.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -222,7 +221,7 @@ class CheckOutScreen extends StatelessWidget {
                                       '395',
                                       style: TextStyle(
                                         color: K.whiteColor,
-                                        fontSize: 8.sp,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
@@ -250,85 +249,61 @@ class CheckOutScreen extends StatelessWidget {
                       child: Icon(
                         EvaIcons.edit2Outline,
                         color: Colors.black,
-                        size: 8.sp,
+                        size: 20.sp,
                       ),
                     ),
                   ),
                 ],
               ),
               K.sizedBoxH,
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 8.0.w, vertical: 8.0.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Sub Total',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 6.sp,
-                          ),
-                        ),
-                        Text(
-                          '\$360.00',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 6.sp,
-                              color: K.mainColor),
-                        ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  Text(
+                    'Sub Total',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500, fontSize:16.sp,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 8.0.w, vertical: 8.0.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Shipping',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 6.sp,
-                          ),
-                        ),
-                        Text(
-                          '\$40.00',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 6.sp,
-                            color: K.mainColor,
-                          ),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    '\$360.00',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500, fontSize:16.sp,
+                        color: K.mainColor),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 5.0.w, vertical: 8.0.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Total',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 8.sp,
-                          ),
-                        ),
-                        Text(
-                          '\$400.00',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 6.sp,
-                            color: K.mainColor,
-                          ),
-                        ),
-                      ],
-                    ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  Text(
+                    'Shipping',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500, fontSize:16.sp, height: 2.h),
+                  ),
+                  Text(
+                    '\$40.00',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, fontSize:16.sp,
+                        color: K.mainColor,
+                        height: 2.h),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  Text(
+                    'Total',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, fontSize:18.sp, height: 3.h),
+                  ),
+                  Text(
+                    '\$400.00',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, fontSize:18.sp,
+                        color: K.mainColor,
+                        height: 3.h),
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constant.dart';
 
@@ -18,7 +19,7 @@ class Buttons extends StatelessWidget {
         label!.toUpperCase(),
         style: TextStyle(
           color: colorText,
-          fontSize: 14,
+          fontSize: 15.sp,
         ),
       ),
       style: TextButton.styleFrom(

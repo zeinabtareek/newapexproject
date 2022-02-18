@@ -26,13 +26,13 @@ class CircleCard extends StatelessWidget {
               shadowColor: K.grayColor,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                width: 70,
-                height: 70,
+                width: 70.w,
+                height: 70.h,
                 child: Center(
                   child: Image.asset(
                     images!,
-                    width: 70.w,
-                    height: 70.h,
+                    width: 50.w,
+                    height: 50.h,
                   ),
                 ),
                 decoration: BoxDecoration(

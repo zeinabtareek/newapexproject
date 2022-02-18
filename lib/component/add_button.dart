@@ -17,12 +17,12 @@ class AddButton extends StatelessWidget {
         text!,
         style: TextStyle(
           color: K.whiteColor,
-          fontSize: 7.sp,
+          fontSize: 18.sp,
           fontFamily: "Poppins SemiBold",
         ),
       ),
       style: ElevatedButton.styleFrom(
-          fixedSize: Size(150.w, 80.h),
+          fixedSize: Size(350.w, 30.h),
           primary: K.blackColor,
           // primary:Color(0xFFF5F5F5),
           shape:

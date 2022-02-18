@@ -40,7 +40,7 @@ class CategoryCard extends StatelessWidget {
                   label!,
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 6.sp,
+                    fontSize: 15.sp,
                   ),
                 ),
               ),

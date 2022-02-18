@@ -6,7 +6,6 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:newapexproject/screens/order_screens/order_details.dart';
 import 'package:newapexproject/screens/order_screens/order_history.dart';
 
@@ -42,21 +41,20 @@ class ConfirmationBill extends StatelessWidget {
                   children: [
                     Text(
                       'It\'s Ordered',
-                      style: GoogleFonts.aBeeZee(
-                        textStyle: TextStyle(color: K.blackColor),
+                      style: TextStyle(color: K.blackColor,fontSize: 18.sp,),
                       ),
-                    ),
+
                      Text(
                       'Order No. #15997',
                       style: TextStyle(
-                          fontSize: 6.sp,
+                          fontSize: 16.sp,
                           color: K.blackColor),
                     ),
                   ],
                 ),
               ),
               K.sizedBoxH,
-              Center(child: Text('You\'ve successfully placed the order',style: TextStyle(fontWeight: FontWeight.w600 ,fontSize: 8.sp), )),
+              Center(child: Text('You\'ve successfully placed the order',style: TextStyle(fontWeight: FontWeight.w600 ,fontSize: 18.sp), )),
               K.sizedBoxH,
               SizedBox(width: MediaQuery.of(context).size.width,
                   child:  Text('You can check statue of your order by using our delivery status feature you will receive an order confirmation call with details of your order . Track you order now',style: TextStyle(height: 2.5.h,letterSpacing: .5.w ,color: K.blackColor.withOpacity(.7)),)),
@@ -64,7 +62,7 @@ class ConfirmationBill extends StatelessWidget {
               Center(
                 child: AddButton(text: 'Track your Order', onPressed: () {Get.to(OrderDetails());},),),
               K.sizedBoxH,
-              Text('Your account',style: TextStyle(fontWeight: FontWeight.w600 ,fontSize: 8.sp), ),
+              Text('Your account',style: TextStyle(fontWeight: FontWeight.w600 ,fontSize: 18.sp), ),
               K.sizedBoxH,
               SizedBox(width: MediaQuery.of(context).size.width,
                   child:  Text('You can log to your account using email and password defined earlier . On your account you can edit your profile data , check your history of transactions .edit subscription to newsletters',style: TextStyle(height: 2.5.h,letterSpacing: .5.w ,color: K.blackColor.withOpacity(.7)),)),

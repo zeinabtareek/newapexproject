@@ -21,7 +21,7 @@ class ProductDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: K.width.w,
+            width: double.infinity,
             height: MediaQuery.of(context).size.height/1.5,
             // height: K.height / 3.h,
             child: Stack(
@@ -73,7 +73,7 @@ class ProductDetails extends StatelessWidget {
                              Text(
                               'Classic Hoodie',
                               style: TextStyle(
-                                fontSize: 8.sp,
+                                fontSize: 20.sp,
                                 color: K.blackColor,
                                 fontFamily: "Poppins-Bold",
                               ),
@@ -81,12 +81,11 @@ class ProductDetails extends StatelessWidget {
                                'Boomboogie',
                                style: TextStyle(
                                  color: K.grayColor,
-                                 fontSize: 5.sp,
-                                 height: .99.h
+                                 fontSize: 16.sp,
                                ),
                              ),
                            ],
-                         ),SizedBox(width: 4.w,),
+                         ),SizedBox(width: 6.w,),
                         const Icon(
                           Icons.star,
                           color: Colors.amber,
@@ -123,13 +122,13 @@ class ProductDetails extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black.withOpacity(.6),
                       fontWeight: FontWeight.bold,
-                      fontSize: 6.sp),
+                      fontSize: 18.sp),
                 ),
                  Text(
                   'The Under Armour Mens Rival Cotton Sweatshirt delivers comfortable, casual winter comfort. Constructed from mid-weight performance cotton a brushed fleece interior it delivers a warm and cosy fit that  sure to keep your body temps ',
                   // maxLines: 4,
                   style: TextStyle(
-                    fontSize: 5.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     color: Colors.grey,
                   ),
@@ -145,14 +144,14 @@ class ProductDetails extends StatelessWidget {
                          Text(
                           'Colors',
                           style: TextStyle(
-                            fontSize: 6.sp,
+                            fontSize: 18.sp,
                             color: Colors.grey,
                             fontFamily: "Poppins-Bold",
                           ),
                         ),
                         Row(children: [
                           SizedBox(
-                            height: 25,
+                            height: 38.h,
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 shrinkWrap: true,
@@ -171,7 +170,7 @@ class ProductDetails extends StatelessWidget {
                         Text(
                           'Price',
                           style: TextStyle(
-                            fontSize: 6.sp,
+                            fontSize: 18.sp,
                             color: Colors.grey,
                             fontWeight: FontWeight.w600,
                             fontFamily: "Poppins SemiBold",
@@ -181,7 +180,7 @@ class ProductDetails extends StatelessWidget {
                           '\$75.00 ',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 10.sp,
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.bold),
                         )
                       ],

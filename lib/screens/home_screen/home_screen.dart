@@ -27,35 +27,33 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: K.whiteColor,
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          K.sizedBoxH,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50.h, vertical: 15.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20.h),
             child: AutoSizeText(
               "What are you looking for",
-              style: TextStyle(color: K.blackColor, fontSize: 7.sp),
+              style: TextStyle(color: K.blackColor, fontSize: 18.sp),
             ),
           ),
-          K.sizedBoxH,
           TextFieldSearch(),
           box(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AutoSizeText(
                   "Top Category",
-                  style: TextStyle(color: K.blackColor, fontSize: 8.sp),
+                  style: TextStyle(color: K.blackColor, fontSize: 18.sp),
                 ),
                 AutoSizeText(
                   "show all",
-                  style: TextStyle(color: K.mainColor, fontSize: 6.sp),
+                  style: TextStyle(color: K.mainColor, fontSize: 15.sp),
                 ),
               ],
             ),
           ),
           SizedBox(
-            height: 250.h,
+            height: 150.h,
             child: ListView.builder(
                 itemCount: _controller.images.length,
                 shrinkWrap: true,
@@ -78,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
               options: CarouselOptions(
-                  height: 300.h,
+                  height: 200.h,
                   autoPlay: true,
                   onPageChanged: (index, reason) {
                     print(index);
@@ -99,17 +97,17 @@ class HomeScreen extends StatelessWidget {
           ),
           box(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AutoSizeText(
                   "Recommend for you",
-                  style: TextStyle(color: K.blackColor, fontSize: 8.sp),
+                  style: TextStyle(color: K.blackColor, fontSize: 18.sp),
                 ),
                 AutoSizeText(
                   "show all",
-                  style: TextStyle(color: K.mainColor, fontSize: 6.sp),
+                  style: TextStyle(color: K.mainColor, fontSize: 15.sp),
                 ),
               ],
             ),
@@ -128,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 8,
                 childAspectRatio: MediaQuery.of(context).size.width.w /
-                    (MediaQuery.of(context).size.height / 1.3.h),
+                    (MediaQuery.of(context).size.height / 2.h),
               ),
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) => CategoryCard(

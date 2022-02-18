@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../../constant.dart';
@@ -15,10 +15,10 @@ class OrderDetails extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(
+            icon:  Icon(
               Icons.favorite_outline,
               color: Colors.black,
-              size: 28,
+              size: 25.sp,
             ),
           ),
           K.sizedBoxW,
@@ -31,31 +31,31 @@ class OrderDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children:  [
-                const Text(
+                 Text(
                   'Order No. #15252',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 18.sp),
                 ),
                 K.sizedBoxH,
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:  [
-                    const Text('Classic Hoodie',style: TextStyle(color: K.grayColor,fontSize: 16),),
+                     Text('Classic Hoodie',style: TextStyle(color: K.grayColor,fontSize: 14.sp),),
                     K.sizedBoxW,
                     K.sizedBoxW,
-                    const Text('x3',style: TextStyle(color: K.grayColor,fontSize: 20),),
+                     Text('x3',style: TextStyle(color: K.grayColor,fontSize: 16.sp),),
                     const Text('\$338.00',style: TextStyle(color: K.blackColor ),),
                   ],
                 ),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:  [
-                    const Text('jonie Women Shoes',style: TextStyle(color: K.grayColor,fontSize: 16),),
+                     Text('jonie Women Shoes',style: TextStyle(color: K.grayColor,fontSize: 14.sp,height: 2.h),),
                     K.sizedBoxW,
                     K.sizedBoxW,
-                    Text('x1',style: const TextStyle(color: K.grayColor,fontSize: 20),),
+                    Text('x1',style:  TextStyle(color: K.grayColor,fontSize: 18.sp),),
                     Text('\122.00',style: const TextStyle(color: K.blackColor ),),
                   ],
                 ), K.sizedBoxH,
                 Container(
-                  height: MediaQuery.of(context).size.height*.15,
+                  height: MediaQuery.of(context).size.height*.19,
                   padding: EdgeInsets.all(15),
                   color: K.grayColor.withOpacity(.3),
                   child: Column(
@@ -67,14 +67,13 @@ class OrderDetails extends StatelessWidget {
                         children:  [
                           Text(
                             'Subtotal',
-                            style: GoogleFonts.aBeeZee(
-                              textStyle: TextStyle(color: K.blackColor),
+                            style: TextStyle(color: K.blackColor),
                             ),
-                          ),
-                          const Text(
+
+                           Text(
                             '\$360.00',
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 16.sp,
                                 color: K.blackColor),
                           ),
                         ],
@@ -83,13 +82,13 @@ class OrderDetails extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:  [
                           Text('Shipping Method',
-                            style: GoogleFonts.aBeeZee(
-                              textStyle: TextStyle(color: K.blackColor),
+                            style:  TextStyle(color: K.blackColor,
+                              fontSize: 16.sp,
                             ),
-                          ),
-                          const Text('\$Shipping',
+                            ),
+                           Text('\$Shipping',
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 16.sp,
                                   color: K.blackColor,
                                   height: 2)),
                         ],
@@ -99,18 +98,17 @@ class OrderDetails extends StatelessWidget {
                         children:  [
                           Text(
                             'Total',
-                            style: GoogleFonts.aBeeZee(
-                              textStyle: const TextStyle(color: K.blackColor,
+                            style:  TextStyle(color: K.blackColor,
                                 fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
 
-                              ),
                             ),
                             ),
-                          const Text(
+                           Text(
                             '\$400.00',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 color: K.blackColor,
                                 height: 3),
                           ),
@@ -123,7 +121,7 @@ class OrderDetails extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Status', style: TextStyle(color: K.blackColor,fontSize: 14 ,fontWeight: FontWeight.bold)),
+                     Text('Status', style: TextStyle(color: K.blackColor,fontSize: 16.sp ,fontWeight: FontWeight.bold)),
                     Text('PROCESSING'.toUpperCase(),style: TextStyle(color: K.mainColor),)
                   ],
                 ),
@@ -137,8 +135,13 @@ class OrderDetails extends StatelessWidget {
                 ),
 
                 K.sizedBoxH,
-                const Text('Shipping Address',style: TextStyle(color: K.blackColor,fontSize: 18 ,fontWeight: FontWeight.bold),),
-                const Text('128 trandonSt ,london ,Mit ',style: TextStyle(color: K.grayColor,fontSize: 14 ,fontWeight: FontWeight.normal ,height: 2),),
+                 Text('Shipping Address',style: TextStyle(color: K.blackColor,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.bold),),
+                 Text('128 trandonSt ,london ,Mit ',style: TextStyle(color: K.grayColor,
+                    fontSize: 16.sp,
+
+                    fontWeight: FontWeight.normal ,height: 2),),
                 ],
           ),
         ),

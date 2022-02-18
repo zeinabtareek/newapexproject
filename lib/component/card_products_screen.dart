@@ -1,6 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constant.dart';
 
@@ -45,18 +46,19 @@ class ProductCard extends StatelessWidget {
                     images!,
                     fit: BoxFit.cover,
                     width: double.infinity,
+                    height: 250,
                   ),
                   Positioned(
                     child: IconButton(
                       onPressed: favouriteFun,
                       icon: Icon(
                         iconData,
-                        size: 25,
+                        size: 25.sp,
                         color: K.grayColor,
                       ),
                     ),
-                    top: 10,
-                    right: 4,
+                    top: 5.h,
+                    right: 3.w,
                   ),
                 ],
               ),
@@ -68,23 +70,27 @@ class ProductCard extends StatelessWidget {
                 children: [
                   Text(
                     label!,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      height: 2.h,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w700,
                       color: K.blackColor,
-                      fontFamily: "Poppins-Bold",
                     ),
                   ),
                   Text(
                     price!,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       color: K.grayColor,
-                      fontSize: 16,
+                      fontSize: 14.sp,
                     ),
                   ),
-                  const Text('In Stock',
+                   Text('In Stock',
                       style: TextStyle(
+                        height: 2.h,
                         color: K.cardColor,
-                        fontSize: 15,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       )),
                   Row(
@@ -97,13 +103,13 @@ class ProductCard extends StatelessWidget {
                           color: Colors.amber,
                         ),
                         itemCount: 5,
-                        itemSize: 15.0,
+                        itemSize: 15.0.sp,
                         direction: Axis.horizontal,
                       ),
-                      const Icon(
+                       Icon(
                         EvaIcons.shoppingCartOutline,
                         color: K.grayColor,
-                        size: 25,
+                        size: 25.sp,
                       ),
                     ],
                   ),

@@ -24,7 +24,7 @@ class ProductsScreen extends StatelessWidget {
               icon: Icon(
                 EvaIcons.shoppingCartOutline,
                 color: K.grayColor,
-                size: 12.sp,
+                size: 25.sp,
               ),
               onPressed: () {
                 Get.toNamed(AppRoutes.cartScreen);
@@ -38,17 +38,16 @@ class ProductsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 10.0.w,
+                horizontal: 8.0.w,
                 vertical: 15.0.h,
               ),
               child: Text(
                 'Products',
-                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
-              height: 80.h,
-              width: K.width,
+              height: 60.h,
               child: Center(
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -90,7 +89,7 @@ class ProductsScreen extends StatelessWidget {
                   mainAxisSpacing: 1,
                   crossAxisSpacing: 0,
                   childAspectRatio: MediaQuery.of(context).size.width.w /
-                      (MediaQuery.of(context).size.height / 1.h),
+                      (MediaQuery.of(context).size.height / 1.6.h),
                 ),
                 itemCount: _controller.productsText.length,
                 itemBuilder: (BuildContext context, int index) => Obx(

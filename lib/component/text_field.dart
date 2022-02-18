@@ -11,7 +11,7 @@ class FixedTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric
-        (horizontal: 11.0.w ,vertical: 11.0.h),
+        (horizontal: 8.0.w ,vertical: 2.0.h),
       child: TextFormField(
         onChanged: function,
         showCursor: true,
@@ -21,7 +21,7 @@ class FixedTextField extends StatelessWidget {
             label: Text(
               label!,
               style:  TextStyle(
-                  color: K.grayColor, fontWeight: FontWeight.bold, fontSize: 6.sp),
+                  color: K.grayColor, fontWeight: FontWeight.bold, fontSize: 14.sp),
             ),
             enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: K.grayColor)),

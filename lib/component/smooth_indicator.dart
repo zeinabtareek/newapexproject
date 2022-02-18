@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SmoothIndicator extends StatelessWidget {
   const SmoothIndicator({Key? key, this.color}) : super(key: key);
@@ -7,8 +8,8 @@ class SmoothIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 12.0,
-        height: 12.0,
+        width: 12.0.w,
+        height: 12.0.h,
         margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
         decoration: BoxDecoration(shape: BoxShape.circle, color: color));
   }
