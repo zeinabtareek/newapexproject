@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
                     return Cart(
                       price: "\$250",
                       label: "Fashion",
-                      image: "assets/images/kit.jpg",
+                      image: "https://api.khofow.com/storage/uploads/TSDEqe-1638228474.jpg",
                       decrease: () {},
                       increase: () {},
                       clear: () {},
