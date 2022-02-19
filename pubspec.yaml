@@ -45,6 +45,10 @@ dependencies:
   flutter_screenutil: ^5.1.1
   auto_size_text: ^3.0.0
   material_design_icons_flutter: ^5.0.6595
+  cloud_firestore: ^3.1.8
+  firebase_storage: ^10.2.7
+  firebase_auth: ^3.3.7
+  flutter_secure_storage: ^5.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

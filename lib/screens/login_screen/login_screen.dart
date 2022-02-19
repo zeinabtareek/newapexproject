@@ -8,12 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/rich_text.dart';
 import 'package:newapexproject/routes/app_route.dart';
+import 'package:newapexproject/screens/login_screen/controller/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _controller = Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -46,12 +48,18 @@ class LoginScreen extends StatelessWidget {
             FixedTextField(
               key: key,
               label: "Email Address",
-              function: (v) {},
+              function: (v) {
+                _controller.validEmail(v);
+                print(_controller.email);
+              },
             ),
             FixedTextField(
               key: key,
               label: "Password",
-              function: (v) {},
+              function: (v) {
+                _controller.validPassword(v);
+                print(_controller.password);
+              },
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -71,7 +79,7 @@ class LoginScreen extends StatelessWidget {
             RegisterButton(
               key: key,
               function: () {
-                Get.toNamed(AppRoutes.registerScreen);
+                _controller.log();
               },
               label: "Login",
             ),
@@ -81,7 +89,7 @@ class LoginScreen extends StatelessWidget {
               leftLabel: "Don't have an account?",
               rightLabel: "Register",
               onTab: () {
-                Get.toNamed(AppRoutes.cartScreen);
+                Get.toNamed(AppRoutes.registerScreen);
               },
             ),
           ],
