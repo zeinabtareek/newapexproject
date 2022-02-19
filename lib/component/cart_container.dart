@@ -39,7 +39,7 @@ class Cart extends StatelessWidget {
                   bottomRight: Radius.circular(2),
                   topRight: Radius.circular(2)),
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(
+              child: Image.network(
                 image!,
                 fit: BoxFit.cover,
                 width: 140.w,

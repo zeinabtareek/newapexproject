@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
               options: CarouselOptions(
-                  height: 200.h,
+                  height: 300.h,
                   autoPlay: true,
                   onPageChanged: (index, reason) {
                     print(index);
@@ -125,10 +125,10 @@ class HomeScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 8,
-                childAspectRatio: MediaQuery.of(context).size.width.w /
-                    (MediaQuery.of(context).size.height / 2.h),
+                childAspectRatio: MediaQuery.of(context).size.width.w/.7 /
+                    (MediaQuery.of(context).size.height / 1.6.h),
               ),
-              itemCount: 4,
+              itemCount: 2,
               itemBuilder: (BuildContext context, int index) => CategoryCard(
                 image:  "assets/images/kit.jpg",
                 label: "clothes",
