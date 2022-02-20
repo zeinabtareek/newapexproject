@@ -10,8 +10,7 @@ class LoginServices {
 
   Future<UserModel?> login(String password, String email) async {
     try {
-      final user = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       print(password);
       print(email);
     } catch (e) {
@@ -20,19 +19,19 @@ class LoginServices {
     print(password);
     print(email);
 
-    UserModel? user = await getUserByEmail(password, email);
+    UserModel? user = await getUserByEmail(email, password);
     _services.updateStorage(user!);
     return user;
   }
 
-  Future<UserModel?> getUserByEmail(String password, String email) async {
+  Future<UserModel?> getUserByEmail(String email, String password) async {
     final data = await _Store.collection("users")
-        .where("password", isEqualTo: password)
-        .where("email", isEqualTo: email)
+        .where('email', isEqualTo: email)
+        .where('password', isEqualTo: password)
         .get();
     if (data.docs.length > 0) {
       return UserModel.fromJson(data.docs.first);
     }
-    throw "Wrong to find your Email !";
+    throw 'Exception';
   }
 }
