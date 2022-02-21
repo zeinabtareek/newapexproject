@@ -22,7 +22,7 @@ class LoginController extends BaseController {
   }
 
   log() async {
-    UserModel? user = await _services.login("zozo@gmail.com", "01004479160");
-    AuthController.to.changeLoggedIn(true, user!);
+    UserModel? user = await _services.login(email,password);
+    AuthController.to.changeLoggedIn(true, user);
   }
 }

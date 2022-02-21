@@ -8,30 +8,29 @@ class LoginServices {
   final _Store = FirebaseFirestore.instance;
   final _services = AuthServices();
 
-  Future<UserModel?> login(String password, String email) async {
+  Future<UserModel> login(
+        String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      print(password);
-      print(email);
     } catch (e) {
-      print(e);
+      print(e.toString());
     }
-    print(password);
-    print(email);
-
-    UserModel? user = await getUserByEmail(email, password);
-    _services.updateStorage(user!);
-    return user;
+    UserModel createdUser = await getUserByEmail( password, email);
+    _services.updateStorage(createdUser);
+    return createdUser;
   }
 
-  Future<UserModel?> getUserByEmail(String email, String password) async {
-    final data = await _Store.collection("users")
-        .where('email', isEqualTo: email)
-        .where('password', isEqualTo: password)
+  Future<UserModel> getUserByEmail(
+        String password, String email) async {
+    final data = await _Store
+        .collection("users")
+        .where("password", isEqualTo: password)
+        .where("email", isEqualTo: email)
         .get();
     if (data.docs.length > 0) {
       return UserModel.fromJson(data.docs.first);
     }
-    throw 'Exception';
+    throw
+        "Wrong to find your Email !";
   }
 }

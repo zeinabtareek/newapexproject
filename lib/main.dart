@@ -21,11 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(360, 690),
-      builder: () => GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.splashScreen,
-        getPages: AppScreens.screens,
-      ),
+        builder: () => GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppRoutes.splashScreen,
+          getPages: AppScreens.screens,
+        ),
+
     );
   }
 }

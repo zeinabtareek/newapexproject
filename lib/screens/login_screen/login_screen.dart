@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             SizedBox(
               width: Get.width.w,
-              height: Get.height * .9.h,
+              height: Get.height * 0.3.h,
               child: CustomPaint(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
