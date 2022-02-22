@@ -28,45 +28,48 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: CircleAvatar(
-                        radius: 100 - 2 * 20,
-                        backgroundImage: NetworkImage(
-                            "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg")),
+                        radius:90.w,
+                        backgroundImage:
+                        NetworkImage(
+                            "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg",)),
                   ),
                   Positioned(
                     child: IconButton(
                         onPressed: () {},
                         icon:  Icon(
                           EvaIcons.camera,
-                          size: 30.sp,
+                          size: 40.sp,
                           color: K.mainColor,
                         )),
-                    bottom: 0,
-                    right: 0,
+                    bottom: 10.h,
+                    right: 10.w,
                   ),
                 ],
               ),
-              const Text(
+               Text(
                 'Caroline John',
                 softWrap: true,
                 style: TextStyle(
                     color: K.blackColor,
                     fontFamily: 'Poppins-Bold',
-                    fontSize: 16),
+                    fontSize: 16.sp),
               ),
-              const Text(
+               Text(
                 'johnmatilda@gmail.com \n',
                 softWrap: true,
                 style: TextStyle(
                     color: K.grayColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 12),
+                    fontSize: 10.sp),
               ),
               ListView.builder(
                   itemCount: _controller.labels.length,
                   shrinkWrap: true,
+                  padding: EdgeInsets.symmetric
+                  (horizontal: 2.0.w ,vertical: 2.0.h),
                   itemBuilder: (ctx, index) => FixedListTile(
                         onTap: () {
                           if (index == 0) {

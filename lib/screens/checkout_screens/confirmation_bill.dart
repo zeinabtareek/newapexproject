@@ -1,10 +1,10 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/constant.dart';
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/screens/order_screens/order_details.dart';
 import 'package:newapexproject/screens/order_screens/order_history.dart';

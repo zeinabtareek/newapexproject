@@ -1,11 +1,14 @@
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
+import 'package:newapexproject/component/address_text_field.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/component/text_field.dart';
 import 'package:newapexproject/routes/app_route.dart';
+
+import '../../constant.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({Key? key}) : super(key: key);
@@ -18,46 +21,103 @@ class AddressScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-            padding: EdgeInsets.symmetric
-              (horizontal: 8.0.w ,vertical: 3.0.h),
+            padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 3.0.h),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FixedTextField(
-                  key: key,
-                  label: "First name",
-                  function: (v) {},
+                K.sizedBoxH,
+                AutoSizeText(
+                  'Full Name',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600),
                 ),
-                FixedTextField(
-                  key: key,
-                  label: "Last name",
-                  function: (v) {},
+                K.sizedBoxH,
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'Full Name',
                 ),
-                FixedTextField(
-                  key: key,
-                  label: "Email name *Optional",
-                  function: (v) {},
+                K.sizedBoxH,
+                AutoSizeText(
+                  'Email name *Optional',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600),
                 ),
-                FixedTextField(
-                  key: key,
-                  label: "Address ",
-                  function: (v) {},
+                K.sizedBoxH,
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'Email name *Optional',
                 ),
-                FixedTextField(
-                  key: key,
-                  label: "Phone 1",
-                  function: (v) {},
+                K.sizedBoxH,
+                AutoSizeText(
+                  'Address',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600),
                 ),
-                FixedTextField(
-                  key: key,
-                  label: "Phone 2 *Optional",
-                  function: (v) {},
+                K.sizedBoxH,
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'Address',
                 ),
-                FixedTextField(
-                  key: key,
-                  label: "Note ",
-                  function: (v) {},
+                K.sizedBoxH,
+                AutoSizeText(
+                  'City',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600),
                 ),
-                box(),
+                K.sizedBoxH,
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'City',
+                ),
+                K.sizedBoxH,
+                AutoSizeText(
+                  'Phone 1',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+                K.sizedBoxH,
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'Phone 1',
+                ),
+                K.sizedBoxH,
+                AutoSizeText(
+                  'Phone 2',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+                K.sizedBoxH,
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'Phone 2',
+                ),
+                K.sizedBoxH,
+                AutoSizeText(
+                  'Additional Notes *Optional',
+                  style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+                K.sizedBoxH,
+                AddressTextField(
+                  label: 'Write any other information( Optional)',
+                ),
+                K.sizedBoxH,
+                K.sizedBoxH,
                 Center(
                   child: AddButton(
                       text: 'Continue to Payment',
@@ -66,52 +126,8 @@ class AddressScreen extends StatelessWidget {
                       }),
                 ),
               ],
-            )
-            // Column(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       // ListTile(
-            //       //   selectedTileColor: K.mainColor,
-            //       //   enabled: true,
-            //       //   leading:TextButton.icon(
-            //       //     onPressed: () => showDialog<String>(
-            //       //       context: context,
-            //       //       builder: (BuildContext context) =>
-            //       //           AlertDialog(
-            //       //         actions: <Widget>[
-            //       //           TextButton(child: const Text('Add'),
-            //       //             onPressed: () {
-            //       //               Get.back();
-            //       //               ScaffoldMessenger.of(context).showSnackBar(
-            //       //                   const SnackBar(
-            //       //                     content: Text('Category cannot be empty'),));
-            //       //             },),
-            //       //           TextButton(child: const Text('Cancel'), onPressed: () { Get.back(); },),
-            //       //         ],
-            //       //         content: TextFormField(
-            //       //           controller: categoryController,
-            //       //           onChanged: (value) {},
-            //       //           decoration: const InputDecoration(
-            //       //               hintText: 'add address'
-            //       //           ),
-            //       //         ),
-            //       //       ),
-            //       //     ),
-            //       //     label: Text( 'Add new Address',),
-            //       //     icon: const Icon(
-            //       //       Icons.category,
-            //       //       color: K.blackColor,
-            //       //     ),
-            //       //   ),
-            //       // ),
-            //     ]),
-            ),
+            )),
       ),
     );
   }
-
-  Widget box() => SizedBox(
-        height: 100.h,
-      );
 }

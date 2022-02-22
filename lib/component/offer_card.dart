@@ -14,7 +14,7 @@ class OfferCards extends StatelessWidget {
       onTap: onTap,
       child: Container(
         clipBehavior: Clip.antiAlias,
-        width: K.width - 30.w,
+        width: K.width - 50.w,
         child: Image.asset(
           images!,
           fit: BoxFit.cover,

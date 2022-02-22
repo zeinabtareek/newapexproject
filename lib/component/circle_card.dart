@@ -26,12 +26,12 @@ class CircleCard extends StatelessWidget {
               shadowColor: K.grayColor,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                width: 70.w,
-                height: 70.h,
+                width: 75.w,
+                height: 75.h,
                 child: Center(
                   child: Image.asset(
-                    images!,
-                    width: 50.w,
+                    images!,fit: BoxFit.contain,
+                    width: 60.w,
                     height: 50.h,
                   ),
                 ),
@@ -42,7 +42,7 @@ class CircleCard extends StatelessWidget {
               ),
             ),
           ),
-          K.sizedBoxH,
+          SizedBox(height: 8.h,),
           AutoSizeText(
             labels!,
             style: TextStyle(color: K.blackColor, fontSize: 6.sp),

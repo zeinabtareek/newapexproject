@@ -25,4 +25,8 @@ class K {
     Colors.purpleAccent,
     K.grayColor,
   ];
+  static int MobileBreakpoint = 576;
+  static int TabletBreakpoint = 1024;
+  static int DesktopBreakPoint = 1366;
+
 }

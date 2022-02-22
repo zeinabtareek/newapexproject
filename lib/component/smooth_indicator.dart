@@ -8,8 +8,8 @@ class SmoothIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 12.0.w,
-        height: 12.0.h,
+        width: 13.0.w,
+        height: 13.0.h,
         margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
         decoration: BoxDecoration(shape: BoxShape.circle, color: color));
   }

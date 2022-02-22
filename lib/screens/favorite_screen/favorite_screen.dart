@@ -72,7 +72,6 @@ class FavoriteScreen extends StatelessWidget {
                                                 fontSize: 16.sp,
                                                 color: K.blackColor,
                                                 fontFamily: "Poppins-SemiBold"),
-
                                           ),
                                         ),
                                         Icon(
@@ -83,9 +82,7 @@ class FavoriteScreen extends StatelessWidget {
                                       ],
                                     ),
                                     Wrap(
-                                      // spacing: 8.0, // gap between adjacent chips
-                                      // runSpacing: 4.0, // gap between lines
-                                     children:[ RatingBarIndicator(
+                                         children:[ RatingBarIndicator(
                                           rating: 2.75,
                                           itemBuilder: (context, index) => const Icon(
                                             Icons.star,

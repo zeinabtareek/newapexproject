@@ -16,7 +16,7 @@ class TextFieldSearch extends StatelessWidget {
           onChanged: onchange,
           cursorColor: K.mainColor,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(5.w),
+            contentPadding: EdgeInsets.all(2.w),
             suffixIcon: Icon(
               Icons.search,
               color: K.mainColor,

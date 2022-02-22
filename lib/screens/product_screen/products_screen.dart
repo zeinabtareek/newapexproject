@@ -5,27 +5,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/component/buttons_product_screen.dart';
-import 'package:newapexproject/component/card_products_screen.dart';
+import 'package:newapexproject/component/responsive_grid.dart';
 import 'package:newapexproject/routes/app_route.dart';
 import '../../constant.dart';
-import '../../data.dart';
 import 'controller/product_details_controller.dart';
 
-class ProductsScreen extends StatelessWidget {
+class ProductsScreen extends StatefulWidget {
   const ProductsScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ProductsScreen> createState() => _ProductsScreenState();
+}
+
+class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     final _controller = Get.put(ProductScreenController());
     return Scaffold(
       appBar: CustomAppBar(
+        label: 'Products',
         actions: [
           IconButton(
-              icon: Icon(
-                EvaIcons.shoppingCartOutline,
-                color: K.grayColor,
-                size: 25.sp,
-              ),
+              icon: Icon(EvaIcons.shoppingCartOutline, color: K.grayColor, size: 25.sp,),
               onPressed: () {
                 Get.toNamed(AppRoutes.cartScreen);
               }),
@@ -36,16 +37,6 @@ class ProductsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 8.0.w,
-                vertical: 15.0.h,
-              ),
-              child: Text(
-                'Products',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-              ),
-            ),
             SizedBox(
               height: 60.h,
               child: Center(
@@ -75,41 +66,42 @@ class ProductsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 2.0.w,
-                vertical: 8.0.h,
-              ),
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 1,
-                  crossAxisSpacing: 0,
-                  childAspectRatio: MediaQuery.of(context).size.width.w /
-                      (MediaQuery.of(context).size.height / 1.6.h),
-                ),
-                itemCount: _controller.productsText.length,
-                itemBuilder: (BuildContext context, int index) => Obx(
-                  () => ProductCard(
-                    favouriteFun: () {
-                      _controller.checkFun();
-                    },
-                    images: productsImage[index],
-                    iconData: _controller.check.value
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                    label: _controller.productsText[index],
-                    onTap: () {
-                      Get.toNamed(AppRoutes.productDetailsScreen);
-                    },
-                    price: ' \$52.00',
-                  ),
-                ),
-              ),
-            ),
+            ),Container(
+              width: double.infinity,
+                height: MediaQuery.of(context).size.height.h,
+                child: ResponsiveLayout()),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //     horizontal: 2.0.w,
+            //     vertical: 8.0.h,
+            //   ),
+            //   child: GridView.builder(
+            //     shrinkWrap: true,
+            //     physics: const ClampingScrollPhysics(),
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2,
+            //       mainAxisSpacing: 1,
+            //       crossAxisSpacing: 0,
+            //         childAspectRatio: MediaQuery.of(context).size.width.w /
+            //           (MediaQuery.of(context).size.height / 1.6.h),
+            //     ),
+            //     itemCount: _controller.productsText.length,
+            //     itemBuilder: (BuildContext context, int index) =>
+            //         // Obx(() =>
+            //             ProductCard(
+            //       favouriteFun: () {
+            //       _controller.checkFun();
+            //     },
+            //     images: productsImage[index],
+            //     iconData: _controller.check.value
+            //         ? Icons.favorite
+            //         : Icons.favorite_border,
+            //     label: _controller.productsText[index],
+            //     onTap: () {
+            //       Get.toNamed(AppRoutes.productDetailsScreen);
+            //     },
+            //     price: ' \$52.00',
+            //   ),),),
           ],
         ),
       ),
