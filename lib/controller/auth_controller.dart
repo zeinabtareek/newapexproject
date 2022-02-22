@@ -48,4 +48,5 @@ class AuthController extends BaseController {
   logOut() {
     _services.signOut();
   }
+  tap(){}
 }
