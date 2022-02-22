@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class FixedTextField extends StatelessWidget {
   const FixedTextField({Key? key, this.label, this.function}) : super(key: key);
   final String? label;
-  final Function(void)? function;
+  final Function(String)? function;
 
   @override
   Widget build(BuildContext context) {

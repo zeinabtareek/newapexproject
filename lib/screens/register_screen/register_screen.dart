@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,12 +6,14 @@ import 'package:newapexproject/component/register_button.dart';
 import 'package:newapexproject/component/rich_text.dart';
 import 'package:newapexproject/component/text_field.dart';
 import 'package:newapexproject/routes/app_route.dart';
+import 'package:newapexproject/screens/register_screen/controller/register_controller.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _controller = Get.put(RegisterController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -21,44 +22,52 @@ class RegisterScreen extends StatelessWidget {
               width: Get.width.w,
               height: Get.height * 0.4.h,
               child: CustomPaint(
-                child:  Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 100.w,
-                    height: 80.h,
-                    child: Image.asset("assets/images/logo.png"),
-                  ),
-                ],
-              ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 100.w,
+                      height: 80.h,
+                      child: Image.asset("assets/images/logo.png"),
+                    ),
+                  ],
+                ),
                 painter: Shapes(),
               ),
             ),
             FixedTextField(
               key: key,
               label: "Name",
-              function: (v) {},
+              function: (v) {
+                _controller.validName(v);
+              },
             ),
             FixedTextField(
               key: key,
               label: "Email",
-              function: (v) {},
+              function: (v) {
+                _controller.validEmail(v);
+              },
             ),
             FixedTextField(
               key: key,
               label: "Phone",
-              function: (v) {},
+              function: (v) {
+                _controller.validPhone(v);
+              },
             ),
             FixedTextField(
               key: key,
               label: "Password",
-              function: (v) {},
+              function: (v) {
+                _controller.validPassword(v);
+              },
             ),
             box(),
             RegisterButton(
               key: key,
               function: () {
-                Get.toNamed(AppRoutes.productScreen);
+                _controller.register();
               },
               label: "Register",
             ),
@@ -76,8 +85,9 @@ class RegisterScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget box() {
-    return  SizedBox(
+    return SizedBox(
       height: 40.h,
     );
   }
