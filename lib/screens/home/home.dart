@@ -1,5 +1,4 @@
 import 'package:newapexproject/constant.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -8,6 +7,7 @@ import 'package:newapexproject/screens/favorite_screen/favorite_screen.dart';
 import 'package:newapexproject/screens/home_screen/home_screen.dart';
 import 'package:newapexproject/screens/product_screen/products_screen.dart';
 import 'package:newapexproject/screens/profile_screen/profile_screen.dart';
+import 'package:newapexproject/screens/setting_screen/setting_screen.dart';
 
 import 'controller/home_controller.dart';
 
@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
       HomeScreen(),
       ProductsScreen(),
       CartScreen(),
-      FavoriteScreen(),
+      SettingScreen(),
       ProfileScreen(),
     ];
     final _controller = Get.put(HomeController());
@@ -35,15 +35,15 @@ class Home extends StatelessWidget {
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: Icon(
-                      MdiIcons.homeOutline,
+                      MdiIcons.storeSettings,
                     ),
                     label: 'Home',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      MdiIcons.directions,
+                      MdiIcons.tshirtCrewOutline,
                     ),
-                    label: 'Directions',
+                    label: 'Categories',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
@@ -53,9 +53,9 @@ class Home extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      MdiIcons.heartOutline,
+                      MdiIcons.databaseSettings,
                     ),
-                    label: 'Favorites',
+                    label: 'Setting',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(

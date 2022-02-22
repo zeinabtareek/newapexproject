@@ -29,3 +29,19 @@ final List<String> productsText = [
   'adidas Originals Relaxed Risque Lightweight',
   'Nike Bags -Unisex Bags',
 ];
+final List<String> popularBrand = [
+  'assets/images/Background@2x.png',
+  'assets/images/brand1@2x.png',
+  'assets/images/Background@2x.png',
+];
+final List<String> expandedHomePicture = [
+  'assets/images/Ad@2x.png',
+  'assets/images/sale-40@2x.png'
+]; final List<dynamic> imagesIcons=[
+  'assets/images/brand@2x.png'
+  'assets/images/offers@2x.png'
+  'assets/images/notifications@2x.png'
+  'assets/images/Contact@2x.png'
+  'assets/images/about@2x.png'
+  'assets/images/language@2x.png'
+];

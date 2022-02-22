@@ -1,24 +1,23 @@
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/component/appbar.dart';
+import 'package:newapexproject/component/payment_group.dart';
 import 'package:newapexproject/screens/checkout_screens/pyment_screen.dart';
+import 'package:newapexproject/screens/order_screens/address_screen.dart';
 import 'package:newapexproject/screens/profile_screen/profile_screen.dart';
-
 import '../../constant.dart';
-import 'confirmation_bill.dart';
-
 class CheckOutScreen extends StatelessWidget {
   const CheckOutScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar:  CustomAppBar(
+        label:'Checkout' ,
         actions: [],
       ),
       body: SingleChildScrollView(
@@ -26,17 +25,13 @@ class CheckOutScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 8.0.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Checkout',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-              ),
               K.sizedBoxH,
               Stack(
                 children: [
                   SizedBox(
-                    height: 200.h,
+                    // height: 400.h,
                     width: 500.w,
                     child: Card(
                       color: K.borderColor,
@@ -45,9 +40,9 @@ class CheckOutScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       elevation: 2,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      child: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -57,7 +52,7 @@ class CheckOutScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 K.sizedBoxH,
-                                Text(
+                                AutoSizeText(
                                   'Shipping Information',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -77,12 +72,13 @@ class CheckOutScreen extends StatelessWidget {
                                       },
                                     ),
                                     K.sizedBoxW,
-                                    Text('Cameron Williamson',
+                                    AutoSizeText('Cameron Williamson',
                                         style: TextStyle(
                                           color: Colors.black.withOpacity(.7),
                                           fontSize: 14.sp,
                                           fontWeight: FontWeight.w500,
-                                        ))
+                                        ),
+                                    ),
                                   ],
                                 ),
                                 K.sizedBoxH,
@@ -94,7 +90,7 @@ class CheckOutScreen extends StatelessWidget {
                                       size: 20.w,
                                     ),
                                     K.sizedBoxW,
-                                    Text(
+                                    AutoSizeText(
                                       '(405) 555-0120 ',
                                       style: TextStyle(
                                         color: Colors.black.withOpacity(.7),
@@ -115,7 +111,8 @@ class CheckOutScreen extends StatelessWidget {
                                     K.sizedBoxW,
                                     SizedBox(
                                       width: 300.w,
-                                      child: Text(
+                                      // height: 300.h,
+                                      child: AutoSizeText(
                                         ' 8502 Perston Rd.inglewoold Main 98380.dunken St . near to Gazoline berline station',
                                         style: TextStyle(
                                           color: Colors.black.withOpacity(.7),
@@ -124,12 +121,12 @@ class CheckOutScreen extends StatelessWidget {
                                         ),
                                         maxLines: 3,
                                       ),
-                                    )
+                                    ), K.sizedBoxH,
                                   ],
                                 ),
                               ],
                             ),
-                          ),
+                          ),K.sizedBoxH,
                         ],
                       ),
                     ),
@@ -158,7 +155,7 @@ class CheckOutScreen extends StatelessWidget {
               Stack(
                 children: [
                   SizedBox(
-                    height: 150.h,
+                    height: 180.h,
                     width: 500.w,
                     child: Card(
                       color: K.mainColor,
@@ -167,9 +164,9 @@ class CheckOutScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       elevation: 2,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.start,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -236,7 +233,7 @@ class CheckOutScreen extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: width * 0.74,
+                    left: width * 0.74.w,
                     top: -6.h,
                     child: TextButton(
                       style: TextButton.styleFrom(
@@ -256,64 +253,12 @@ class CheckOutScreen extends StatelessWidget {
                 ],
               ),
               K.sizedBoxH,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [
-                  Text(
-                    'Sub Total',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500, fontSize:16.sp,
-                    ),
-                  ),
-                  Text(
-                    '\$360.00',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500, fontSize:16.sp,
-                        color: K.mainColor),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [
-                  Text(
-                    'Shipping',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500, fontSize:16.sp, height: 2.h),
-                  ),
-                  Text(
-                    '\$40.00',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, fontSize:16.sp,
-                        color: K.mainColor,
-                        height: 2.h),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [
-                  Text(
-                    'Total',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, fontSize:18.sp, height: 3.h),
-                  ),
-                  Text(
-                    '\$400.00',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, fontSize:18.sp,
-                        color: K.mainColor,
-                        height: 3.h),
-                  ),
-                ],
-              ),
-              Center(
-                child: AddButton(
-                  text: 'Place Order',
-                  onPressed: () {
-                    Get.to(ConfirmationBill());
-                  },
-                ),
+              PaymentGroupe(),
+              AddButton(
+                text: 'Place Order',
+                onPressed: () {
+                  Get.to(AddressScreen());
+                },
               ),
             ],
           ),

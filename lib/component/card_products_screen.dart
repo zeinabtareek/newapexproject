@@ -46,7 +46,7 @@ class ProductCard extends StatelessWidget {
                     images!,
                     fit: BoxFit.cover,
                     width: double.infinity,
-                    height: 250,
+                    height: 250.h,
                   ),
                   Positioned(
                     child: IconButton(

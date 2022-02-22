@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,12 +14,16 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Text(
-        text!,
-        style: TextStyle(
-          color: K.whiteColor,
-          fontSize: 18.sp,
-          fontFamily: "Poppins SemiBold",
+      child: Padding(
+        padding: EdgeInsets.symmetric
+          (horizontal: 8.0.w ,vertical: 8.0.h),
+        child: AutoSizeText(
+          text!,
+          style: TextStyle(
+            color: K.whiteColor,
+            fontSize: 18.sp,
+            fontFamily: "Poppins SemiBold",
+          ),
         ),
       ),
       style: ElevatedButton.styleFrom(

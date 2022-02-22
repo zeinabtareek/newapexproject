@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/component/container_colors.dart';
 import 'package:newapexproject/component/indicator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constant.dart';
 import 'controller/product_details_controller.dart';
