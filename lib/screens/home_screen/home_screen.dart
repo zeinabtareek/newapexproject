@@ -1,4 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:newapexproject/component/appbar_home_screen.dart';
 import 'package:newapexproject/component/brand_slider.dart';
 import 'package:newapexproject/component/card_product.dart';
@@ -14,6 +15,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newapexproject/enum/view_state.dart';
 
 import '../../data.dart';
 import 'controller/home_controller.dart';
@@ -50,18 +52,18 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(
               height: 130.h,
-              child: ListView.builder(
-                itemCount: _controller.images.length,
+              child:Obx(()=> ListView.builder(
+                itemCount: _controller.list.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                physics: ClampingScrollPhysics(),
+                physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) => CircleCard(
                   onTap: () {},
                   images: _controller.images[index],
-                  labels: _controller.labels[index],
+                  labels: _controller.list[index].name,
                 ),
               ),
-            ),
+              ) ),
             CarouselSlider.builder(
               itemCount: _controller.orders.length,
               carouselController: _controller.controller,

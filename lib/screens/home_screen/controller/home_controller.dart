@@ -1,10 +1,25 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/controller/base_controller.dart';
+import 'package:newapexproject/enum/view_state.dart';
+import 'package:newapexproject/model/category_model.dart';
+import 'package:newapexproject/services/home_services.dart';
 
 class HomeScreenController extends BaseController {
+  final _services = HomeServices();
+  final list = <CategoryModel>[].obs;
   final CarouselController controller = CarouselController();
   final currentIndex = 0.obs;
+
+  @override
+  Future<void> onInit() async {
+    // TODO: implement onInit
+    super.onInit();
+    ViewState.busy;
+    list.assignAll(await _services.getCategory());
+    ViewState.idle;
+  }
+
   final List<String> images = [
     "assets/images/fashion.jpeg",
     "assets/images/beauty.jpeg",
@@ -19,7 +34,7 @@ class HomeScreenController extends BaseController {
     'Device',
     'Accessories'
   ];
-  final List<String> orders=[
+  final List<String> orders = [
     "assets/images/order.jpeg",
     "assets/images/offer.jpeg",
     "assets/images/offer2.jpeg",
