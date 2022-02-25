@@ -8,6 +8,7 @@ class LoginController extends BaseController {
   final _services = LoginServices();
   final _email = ''.obs;
   final _password = ''.obs;
+  final check = false.obs;
 
   String get email => _email.value;
 
@@ -22,7 +23,9 @@ class LoginController extends BaseController {
   }
 
   log() async {
-    UserModel? user = await _services.login(email,password);
+    check.value = true;
+    UserModel? user = await _services.login(email, password);
     AuthController.to.changeLoggedIn(true, user);
+    check.value =!check.value;
   }
 }

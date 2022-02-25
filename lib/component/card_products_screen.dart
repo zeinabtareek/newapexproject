@@ -12,14 +12,12 @@ class ProductCard extends StatelessWidget {
         this.label,
         this.price,
         this.favouriteFun,
-        this.iconData,
         this.images})
       : super(key: key);
   final Function()? onTap;
   final String? label;
   final String? price;
   final Function()? favouriteFun;
-  final IconData? iconData;
   final String? images;
 
   @override
@@ -48,18 +46,18 @@ class ProductCard extends StatelessWidget {
                     width: double.infinity,
                     height: 250.h,
                   ),
-                  Positioned(
-                    child: IconButton(
-                      onPressed: favouriteFun,
-                      icon: Icon(
-                        iconData,
-                        size: 25.sp,
-                        color: K.grayColor,
-                      ),
-                    ),
-                    top: 5.h,
-                    right: 3.w,
-                  ),
+                  // Positioned(
+                  //   child: IconButton(
+                  //     onPressed: favouriteFun,
+                  //     icon: Icon(
+                  //       iconData,
+                  //       size: 25.sp,
+                  //       color: K.grayColor,
+                  //     ),
+                  //   ),
+                  //   top: 5.h,
+                  //   right: 3.w,
+                  // ),
                 ],
               ),
             ),

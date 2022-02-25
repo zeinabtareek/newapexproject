@@ -10,6 +10,7 @@ class RegisterController extends BaseController {
   final _email = ''.obs;
   final _phone = ''.obs;
   final _password = ''.obs;
+  final check = false.obs;
 
   String get name => _name.value;
 
@@ -36,8 +37,10 @@ class RegisterController extends BaseController {
   }
 
   register() async {
+    check.value = true;
     UserModel? user = await services.register(
         UserModel(email: email, phone: phone, password: password, name: name));
     AuthController.to.changeLoggedIn(true, user!);
+    check.value = false;
   }
 }

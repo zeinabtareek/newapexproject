@@ -1,25 +1,24 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:newapexproject/constant.dart';
 
 class ExpandedHomePicture extends StatelessWidget {
- final  String image;
+  final String image;
+
   const ExpandedHomePicture({
-    Key? key, required this.image,
+    Key? key,
+    required this.image,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8.0),
-        child: Image.asset(
-          image,
-          height: 200.h,
-          fit: BoxFit.cover,
-          width: double.infinity,
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(4),
+      child: Image.network(
+        image,
+        fit: BoxFit.cover,
+        width: K.width - 50.w,
+
       ),
     );
   }

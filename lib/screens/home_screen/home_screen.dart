@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/component/appbar_home_screen.dart';
 import 'package:newapexproject/component/brand_slider.dart';
@@ -14,7 +15,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:newapexproject/model/banner_model.dart';
 import '../../data.dart';
 import 'controller/home_controller.dart';
 
@@ -33,13 +34,16 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: K.whiteColor,
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20.h),
-              child: AutoSizeText(
-                "What are you looking for",
-                style: TextStyle(color: K.blackColor, fontSize: 18.sp),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20.h),
+                child: AutoSizeText(
+                  "What are you looking for",
+                  style: TextStyle(color: K.blackColor, fontSize: 18.sp),
+                ),
               ),
             ),
             TextFieldSearch(),
@@ -49,19 +53,20 @@ class HomeScreen extends StatelessWidget {
               isThereMore: true,
             ),
             SizedBox(
-              height: 130.h,
-              child: ListView.builder(
-                itemCount: _controller.images.length,
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                physics: ClampingScrollPhysics(),
-                itemBuilder: (ctx, index) => CircleCard(
-                  onTap: () {},
-                  images: _controller.images[index],
-                  labels: _controller.labels[index],
-                ),
-              ),
-            ),
+                height: 130.h,
+                child: Obx(
+                  () => ListView.builder(
+                    itemCount: _controller.list.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (ctx, index) => CircleCard(
+                      onTap: () {},
+                      images: _controller.images[index],
+                      labels: _controller.list[index].name,
+                    ),
+                  ),
+                )),
             CarouselSlider.builder(
               itemCount: _controller.orders.length,
               carouselController: _controller.controller,
@@ -95,9 +100,28 @@ class HomeScreen extends StatelessWidget {
                 );
               }).toList(),
             ),
-            ExpandedHomePicture(
-              image: expandedHomePicture[1].toString(),
-            ),
+            FutureBuilder<BannerModel>(
+                future: _controller.banners,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return SizedBox(
+                      height: 200.h,
+                      width: K.width - 50.w,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: snapshot.data!.data!.length,
+                          itemBuilder: (ctx, index) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: ExpandedHomePicture(
+                                  image: snapshot.data!.data![index].image!,
+                                ),
+                              )),
+                    );
+                  } else {
+                    return Center(child: CupertinoActivityIndicator());
+                  }
+                }),
             K.sizedBoxH,
             RowTextHomePage(
               Text: 'Our Valuable Product',
@@ -131,9 +155,9 @@ class HomeScreen extends StatelessWidget {
             ),
             Divider(),
             box(),
-            ExpandedHomePicture(
-              image: expandedHomePicture[0].toString(),
-            ),
+            // ExpandedHomePicture(
+            //   image: expandedHomePicture[0].toString(),
+            // ),
             RowTextHomePage(
               Text: 'Our Popular Brands',
               isThereMore: false,
@@ -163,20 +187,25 @@ class HomeScreen extends StatelessWidget {
             ),
             K.sizedBoxH,
             Divider(),
-            Row(children: [
-              ProductCard(
-                price: 200.0,
-                text: 'Adidas Originals Relaxed Risque Lightweight',
-                image: 'assets/images/Image37.png',
-                width: 100.w,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                itemCount: 6,
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: MediaQuery.of(context).size.width /
+                        (MediaQuery.of(context).size.height / 1.5.h),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10),
+                itemBuilder: (ctx, index) => ProductCard(
+                  price: 200.0,
+                  text: 'Adidas Originals Relaxed Risque Lightweight',
+                  image: 'assets/images/Image37.png',
+                ),
               ),
-              ProductCard(
-                price: 200.0,
-                text: 'Adidas Originals Relaxed Risque Lightweight',
-                image: 'assets/images/Image37.png',
-                width: 100.w,
-              ),
-            ]),
+            ),
             K.sizedBoxH,
           ],
         ),

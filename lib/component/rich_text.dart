@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/constant.dart';
 
 class FixedRichText extends StatelessWidget {
@@ -15,12 +16,12 @@ class FixedRichText extends StatelessWidget {
     return RichText(
         text: TextSpan(
             text: leftLabel,
-            style: const TextStyle(color: K.grayColor, fontSize: 15),
+            style:  TextStyle(color: K.grayColor, fontSize: 15.sp),
             children: [
               TextSpan(
                 recognizer: TapGestureRecognizer()..onTap = onTab,
                 text: rightLabel,
-                style: const TextStyle(fontSize: 15, color: K.mainColor),
+                style:  TextStyle(fontSize: 15.sp, color: K.mainColor),
               )
             ]));
   }
