@@ -31,7 +31,7 @@ class CustomGridView extends StatelessWidget {
       primary: false,
       crossAxisCount: 12,
       itemBuilder: (context, index) =>
-        ProductCard(price: 200.0, text: 'Adidas Originals Relaxed Risque Lightweight', image: 'assets/images/Image37.png',discount:300,  width: 100.w,),
+        ProductCard(price: 200.0, text: 'Adidas Originals Relaxed Risque Lightweight', image: 'assets/images/Image37.png',discount:300,),
       staggeredTileBuilder: (index) => StaggeredTile.fit(columnRatio),
     );
   }

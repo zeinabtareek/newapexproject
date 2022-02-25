@@ -34,10 +34,7 @@ final List<String> popularBrand = [
   'assets/images/brand1@2x.png',
   'assets/images/Background@2x.png',
 ];
-final List<String> expandedHomePicture = [
-  'assets/images/Ad@2x.png',
-  'assets/images/sale-40@2x.png'
-]; final List<dynamic> imagesIcons=[
+ final List<dynamic> imagesIcons=[
   'assets/images/brand@2x.png'
   'assets/images/offers@2x.png'
   'assets/images/notifications@2x.png'
