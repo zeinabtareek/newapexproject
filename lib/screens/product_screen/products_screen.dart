@@ -1,10 +1,10 @@
-
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/component/buttons_product_screen.dart';
+import 'package:newapexproject/component/card_product.dart';
 import 'package:newapexproject/component/responsive_grid.dart';
 import 'package:newapexproject/routes/app_route.dart';
 import '../../constant.dart';
@@ -26,7 +26,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
         label: 'Products',
         actions: [
           IconButton(
-              icon: Icon(EvaIcons.shoppingCartOutline, color: K.grayColor, size: 25.sp,),
+              icon: Icon(
+                EvaIcons.shoppingCartOutline,
+                color: K.grayColor,
+                size: 25.sp,
+              ),
               onPressed: () {
                 Get.toNamed(AppRoutes.cartScreen);
               }),
@@ -66,42 +70,26 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   ),
                 ),
               ),
-            ),Container(
-              width: double.infinity,
-                height: MediaQuery.of(context).size.height.h,
-                child: ResponsiveLayout()),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(
-            //     horizontal: 2.0.w,
-            //     vertical: 8.0.h,
-            //   ),
-            //   child: GridView.builder(
-            //     shrinkWrap: true,
-            //     physics: const ClampingScrollPhysics(),
-            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //       crossAxisCount: 2,
-            //       mainAxisSpacing: 1,
-            //       crossAxisSpacing: 0,
-            //         childAspectRatio: MediaQuery.of(context).size.width.w /
-            //           (MediaQuery.of(context).size.height / 1.6.h),
-            //     ),
-            //     itemCount: _controller.productsText.length,
-            //     itemBuilder: (BuildContext context, int index) =>
-            //         // Obx(() =>
-            //             ProductCard(
-            //       favouriteFun: () {
-            //       _controller.checkFun();
-            //     },
-            //     images: productsImage[index],
-            //     iconData: _controller.check.value
-            //         ? Icons.favorite
-            //         : Icons.favorite_border,
-            //     label: _controller.productsText[index],
-            //     onTap: () {
-            //       Get.toNamed(AppRoutes.productDetailsScreen);
-            //     },
-            //     price: ' \$52.00',
-            //   ),),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                itemCount: 6,
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: MediaQuery.of(context).size.width /
+                        (MediaQuery.of(context).size.height / 1.5.h),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10),
+                itemBuilder: (ctx, index) => ProductCard(
+                  price: 200.0,
+                  text: 'Adidas Originals Relaxed Risque Lightweight',
+                  image: 'assets/images/Image37.png',
+                ),
+              ),
+            )
           ],
         ),
       ),

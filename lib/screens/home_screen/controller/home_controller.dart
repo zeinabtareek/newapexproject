@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/controller/base_controller.dart';
 import 'package:newapexproject/enum/view_state.dart';
+import 'package:newapexproject/model/banner_model.dart';
 import 'package:newapexproject/model/category_model.dart';
 import 'package:newapexproject/services/home_services.dart';
 
@@ -10,12 +11,14 @@ class HomeScreenController extends BaseController {
   final list = <CategoryModel>[].obs;
   final CarouselController controller = CarouselController();
   final currentIndex = 0.obs;
+  Future<BannerModel>? banners;
 
   @override
   Future<void> onInit() async {
     // TODO: implement onInit
     super.onInit();
     ViewState.busy;
+    banners = _services.getBanner();
     list.assignAll(await _services.getCategory());
     ViewState.idle;
   }

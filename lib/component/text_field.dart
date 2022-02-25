@@ -10,8 +10,7 @@ class FixedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric
-        (horizontal: 8.0.w ,vertical: 2.0.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.0.h),
       child: TextFormField(
         onChanged: function,
         showCursor: true,
@@ -20,8 +19,10 @@ class FixedTextField extends StatelessWidget {
             border: InputBorder.none,
             label: Text(
               label!,
-              style:  TextStyle(
-                  color: K.grayColor, fontWeight: FontWeight.bold, fontSize: 14.sp),
+              style: TextStyle(
+                  color: K.grayColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp),
             ),
             enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: K.grayColor)),
