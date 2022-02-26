@@ -28,7 +28,7 @@ class AddButton extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
           fixedSize: Size(350.w, 30.h),
-          primary: K.blackColor,
+          primary: K.mainColor,
           // primary:Color(0xFFF5F5F5),
           shape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),

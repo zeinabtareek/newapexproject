@@ -12,6 +12,13 @@ class HomeServices {
     return data.docs.map((e) => CategoryModel.fromJson(e)).toList();
   }
 
+  Future<List<CategoryModel>> getCategoryDocs(String id) async {
+    final data =
+        await _store.collection('category').doc(id).collection('data').get();
+    print(data.size);
+    return data.docs.map((e) => CategoryModel.fromJson(e)).toList();
+  }
+
   Future<BannerModel> getBanner() async {
     Response response =
         await _dio.get('https://student.valuxapps.com/api/banners');

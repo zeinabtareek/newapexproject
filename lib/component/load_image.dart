@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:newapexproject/constant.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 
@@ -11,8 +13,8 @@ class LoadImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OctoImage(
-      width: double.infinity,
-      height: double.infinity,
+      width: K.width - 50.w,
+      height: 200.h,
       image: CachedNetworkImageProvider(
         image!,
       ),

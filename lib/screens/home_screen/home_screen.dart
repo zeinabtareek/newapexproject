@@ -4,7 +4,7 @@ import 'package:newapexproject/component/appbar_home_screen.dart';
 import 'package:newapexproject/component/brand_slider.dart';
 import 'package:newapexproject/component/card_product.dart';
 import 'package:newapexproject/component/circle_card.dart';
-import 'package:newapexproject/component/expanded_home_pic.dart';
+import 'package:newapexproject/component/load_image.dart';
 import 'package:newapexproject/component/middle_home_slider.dart';
 import 'package:newapexproject/component/offer_card.dart';
 import 'package:newapexproject/component/row_text_home.dart';
@@ -16,6 +16,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/model/banner_model.dart';
+import 'package:newapexproject/screens/product_screen/products_screen.dart';
 import '../../data.dart';
 import 'controller/home_controller.dart';
 
@@ -61,7 +62,12 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     itemBuilder: (ctx, index) => CircleCard(
-                      onTap: () {},
+                      onTap: () {
+                        _controller.getDocs(_controller.list[index].key!);
+                        Get.to(() => ProductScreen(
+                              id: _controller.list[index].key!,
+                            ));
+                      },
                       images: _controller.images[index],
                       labels: _controller.list[index].name,
                     ),
@@ -78,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               options: CarouselOptions(
-                height: 260.h,
+                height: 220.h,
                 autoPlay: true,
                 onPageChanged: (index, reason) {
                   print(index);
@@ -106,15 +112,15 @@ class HomeScreen extends StatelessWidget {
                   if (snapshot.hasData) {
                     return SizedBox(
                       height: 200.h,
-                      width: K.width - 50.w,
+                      width: K.width,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           shrinkWrap: true,
                           itemCount: snapshot.data!.data!.length,
                           itemBuilder: (ctx, index) => Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: ExpandedHomePicture(
-                                  image: snapshot.data!.data![index].image!,
+                                child: LoadImage(
+                                  image: snapshot.data!.data![index].image,
                                 ),
                               )),
                     );
@@ -190,17 +196,20 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
-                itemCount: 6,
+                itemCount: 2,
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: MediaQuery.of(context).size.width /
-                        (MediaQuery.of(context).size.height / 1.5.h),
+                        (MediaQuery.of(context).size.height / 1.3.h),
                     crossAxisCount: 2,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10),
                 itemBuilder: (ctx, index) => ProductCard(
-                  price: 200.0,
+                  price: "200",
+                  rate: "4.5",
+                  discount: "300",
+                  inStock: true,
                   text: 'Adidas Originals Relaxed Risque Lightweight',
                   image: 'assets/images/Image37.png',
                 ),

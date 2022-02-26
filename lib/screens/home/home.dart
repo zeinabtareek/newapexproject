@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> body = [
       HomeScreen(),
-      ProductsScreen(),
+      ProductScreen(),
       CartScreen(),
       SettingScreen(),
       ProfileScreen(),
