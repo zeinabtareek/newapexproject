@@ -4,33 +4,43 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/constant.dart';
 
 class FixedListTile extends StatelessWidget {
-  const FixedListTile(
-      {Key? key, this.onTap, this.iconLeading, this.subTitle='', this.title,  })
-      : super(key: key);
+  const FixedListTile({
+    Key? key,
+    this.onTap,
+    this.iconLeading,
+    this.subTitle = '',
+    this.title,
+  }) : super(key: key);
   final String? title;
   final String? subTitle;
   final IconData? iconLeading;
   final Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric
-        (horizontal: 8.0.w ,),
-      child: ListTile(
-        contentPadding:   EdgeInsets.symmetric
-          (horizontal: 8.0.w ,vertical: 8.0.h),
+    return ListTile(
         onTap: onTap,
-        leading: Icon(iconLeading,
+        leading: Icon(
+          iconLeading,
           color: K.blackColor,
           size: 30.sp,
         ),
-        title:  AutoSizeText(
+        title: AutoSizeText(
           title!,
-          style:  TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, ),),
-        subtitle: AutoSizeText(subTitle!, maxLines: 1, style:  TextStyle(
-              fontSize: 12.sp, fontWeight: FontWeight.w600, height: 1.h),),
-        trailing:  Icon(Icons.arrow_forward_ios_rounded, size: 20.sp,)
-      ),
-    );
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        subtitle: AutoSizeText(
+          subTitle!,
+          maxLines: 1,
+          style: TextStyle(
+              fontSize: 12.sp, fontWeight: FontWeight.w600, height: 1.h),
+        ),
+        trailing: Icon(
+          Icons.arrow_forward_ios_rounded,
+          size: 20.sp,
+        ));
   }
 }

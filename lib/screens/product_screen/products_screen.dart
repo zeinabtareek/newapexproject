@@ -7,8 +7,6 @@ import 'package:newapexproject/component/buttons_product_screen.dart';
 import 'package:newapexproject/component/card_product.dart';
 import 'package:newapexproject/component/circle_progress_indicator.dart';
 import 'package:newapexproject/constant.dart';
-import 'package:newapexproject/enum/view_state.dart';
-import 'package:newapexproject/model/category_model.dart';
 import 'package:newapexproject/routes/app_route.dart';
 import 'package:newapexproject/screens/home_screen/controller/home_controller.dart';
 import 'package:newapexproject/screens/product_details/product_details.dart';
