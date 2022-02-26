@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:newapexproject/controller/base_controller.dart';
-import 'package:newapexproject/model/category_model.dart';
 import 'package:newapexproject/model/products_model.dart';
-import 'package:newapexproject/services/home_services.dart';
 import 'package:newapexproject/services/products_services.dart';
 
 class ProductScreenController extends BaseController {

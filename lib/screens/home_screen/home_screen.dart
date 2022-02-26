@@ -16,6 +16,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/model/banner_model.dart';
+import 'package:newapexproject/screens/product_details/product_details.dart';
 import 'package:newapexproject/screens/product_screen/products_screen.dart';
 import '../../data.dart';
 import 'controller/home_controller.dart';
@@ -194,27 +195,33 @@ class HomeScreen extends StatelessWidget {
             K.sizedBoxH,
             Divider(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridView.builder(
-                itemCount: 2,
-                shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: MediaQuery.of(context).size.width /
-                        (MediaQuery.of(context).size.height / 1.3.h),
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10),
-                itemBuilder: (ctx, index) => ProductCard(
-                  price: "200",
-                  rate: "4.5",
-                  discount: "300",
-                  inStock: true,
-                  text: 'Adidas Originals Relaxed Risque Lightweight',
-                  image: 'assets/images/Image37.png',
-                ),
-              ),
-            ),
+                padding: const EdgeInsets.all(8.0),
+                child: Obx(
+                  () => GridView.builder(
+                    itemCount: _controller.product.length,
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: MediaQuery.of(context).size.width /
+                            (MediaQuery.of(context).size.height / 1.3.h),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10),
+                    itemBuilder: (ctx, index) => ProductCard(
+                      onTap: () {
+                        Get.to(() => ProductDetails(
+                              productModel: _controller.product[index],
+                            ));
+                      },
+                      price: _controller.product[index].price,
+                      rate: _controller.product[index].rate,
+                      discount: _controller.product[index].discount,
+                      inStock: _controller.product[index].inStock,
+                      text: _controller.product[index].name,
+                      image: _controller.product[index].image,
+                    ),
+                  ),
+                )),
             K.sizedBoxH,
           ],
         ),

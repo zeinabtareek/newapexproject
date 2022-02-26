@@ -1,6 +1,6 @@
 class BannerModel {
   bool? status;
-  Null? message;
+  Null message;
   List<Data>? data;
 
   BannerModel({this.status, this.message, this.data});
@@ -30,8 +30,8 @@ class BannerModel {
 class Data {
   int? id;
   String? image;
-  Null? category;
-  Null? product;
+  Null category;
+  Null product;
 
   Data({this.id, this.image, this.category, this.product});
 

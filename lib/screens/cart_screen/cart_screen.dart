@@ -1,9 +1,7 @@
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:newapexproject/component/payment_group.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';

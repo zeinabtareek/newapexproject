@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
-import 'package:newapexproject/component/container_colors.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/component/indicator.dart';
 import 'package:newapexproject/component/load_image.dart';
@@ -33,9 +33,13 @@ class ProductDetails extends StatelessWidget {
                   controller: _controller.boardController,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => LoadImage(
-                    image: productModel!.images![index],
+                    image: productModel!.images![index] == 0
+                        ? productModel!.image![index]
+                        : productModel!.images![index],
                   ),
-                  itemCount: productModel!.images!.length,
+                  itemCount: productModel!.images!.length == 0
+                      ? productModel!.image!.length
+                      : productModel!.images!.length,
                   onPageChanged: (int index) {
                     _controller.isFirstFunction(index);
                     _controller.isLastFunction(index);
@@ -43,7 +47,9 @@ class ProductDetails extends StatelessWidget {
                 ),
                 Indicator(
                   pageController: _controller.boardController,
-                  count: productModel!.images!.length,
+                  count: productModel!.images!.length == 0
+                      ? productModel!.image!.length
+                      : productModel!.images!.length,
                 ),
               ],
             ),
@@ -75,16 +81,22 @@ class ProductDetails extends StatelessWidget {
                           Icons.star,
                           color: Colors.amber,
                         ),
-                        Text(productModel!.rate!,
+                        Text(productModel!.rate!.toString(),
                             style:
                                 TextStyle(color: Colors.black.withOpacity(.6))),
                       ],
                     ),
                     Row(
                       children: [
-                        const Icon(
-                          Icons.share,
-                          color: K.grayColor,
+                        IconButton(
+                          onPressed: () {
+                            Share.share(
+                                'check out my website https://example.com');
+                          },
+                          icon: const Icon(
+                            Icons.share,
+                            color: K.grayColor,
+                          ),
                         ),
                         Obx(() => IconButton(
                             onPressed: () {
@@ -151,7 +163,9 @@ class ProductDetails extends StatelessWidget {
                                 child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
                                     shrinkWrap: true,
-                                    itemCount: productModel!.colors!.length,
+                                    itemCount: productModel!.colors!.length == 0
+                                        ? 0
+                                        : productModel!.colors!.length,
                                     itemBuilder: (ctx, index) => Padding(
                                           padding: const EdgeInsets.all(4),
                                           child: Container(
@@ -159,10 +173,17 @@ class ProductDetails extends StatelessWidget {
                                             width: 35.w,
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color:
-                                                    Color(StringToHex.toColor(
-                                                  productModel!.colors![index],
-                                                ))),
+                                                color: Color(
+                                                            StringToHex.toColor(
+                                                          productModel!
+                                                              .colors![index],
+                                                        )) ==
+                                                        0
+                                                    ? Colors.white
+                                                    : Color(StringToHex.toColor(
+                                                        productModel!
+                                                            .colors![index],
+                                                      ))),
                                           ),
                                         )),
                               ),

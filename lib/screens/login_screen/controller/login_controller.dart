@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/controller/auth_controller.dart';
 import 'package:newapexproject/controller/base_controller.dart';
@@ -22,10 +23,10 @@ class LoginController extends BaseController {
     _password.value = password;
   }
 
-  log() async {
+  log(BuildContext context) async {
     check.value = true;
-    UserModel? user = await _services.login(email, password);
+    UserModel? user = await _services.login(email, password, context);
     AuthController.to.changeLoggedIn(true, user);
-    check.value =!check.value;
+    check.value = !check.value;
   }
 }
