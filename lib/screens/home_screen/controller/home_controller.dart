@@ -7,8 +7,10 @@ import 'package:newapexproject/model/category_model.dart';
 import 'package:newapexproject/services/home_services.dart';
 
 class HomeScreenController extends BaseController {
+  static final  HomeScreenController to = Get.find();
   final _services = HomeServices();
   final list = <CategoryModel>[].obs;
+  final docs = <CategoryModel>[].obs;
   final CarouselController controller = CarouselController();
   final currentIndex = 0.obs;
   Future<BannerModel>? banners;
@@ -21,6 +23,10 @@ class HomeScreenController extends BaseController {
     banners = _services.getBanner();
     list.assignAll(await _services.getCategory());
     ViewState.idle;
+  }
+
+  getDocs(String id) async {
+    docs.assignAll(await _services.getCategoryDocs(id));
   }
 
   final List<String> images = [

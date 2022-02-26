@@ -1,20 +1,23 @@
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/component/container_colors.dart';
-import 'package:newapexproject/component/indicator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:newapexproject/component/indicator.dart';
+import 'package:newapexproject/component/load_image.dart';
+import 'package:newapexproject/model/products_model.dart';
+import 'package:string_to_hex/string_to_hex.dart';
 import '../../constant.dart';
 import 'controller/product_details_controller.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({Key? key}) : super(key: key);
+  const ProductDetails({Key? key, this.productModel}) : super(key: key);
+  final ProductModel? productModel;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProductDetailsController());
+    final _controller = Get.put(ProductDetailsController());
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
@@ -22,40 +25,31 @@ class ProductDetails extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height/1.5,
+            height: MediaQuery.of(context).size.height / 1.5,
             // height: K.height / 3.h,
             child: Stack(
               children: [
                 PageView.builder(
-                  controller: controller.boardController,
+                  controller: _controller.boardController,
                   physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      bottomRight: Radius.circular(25.0),
-                      bottomLeft: Radius.circular(25.0),
-                    ),
-                    child: Image.network(
-                      controller.labels[index],
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
+                  itemBuilder: (context, index) => LoadImage(
+                    image: productModel!.images![index],
                   ),
-                  itemCount: controller.labels.length,
+                  itemCount: productModel!.images!.length,
                   onPageChanged: (int index) {
-                    controller.isFirstFunction(index);
-                    controller.isLastFunction(index);
+                    _controller.isFirstFunction(index);
+                    _controller.isLastFunction(index);
                   },
                 ),
                 Indicator(
-                  pageController: controller.boardController,
-                  count: controller.labels.length,
+                  pageController: _controller.boardController,
+                  count: productModel!.images!.length,
                 ),
               ],
             ),
           ),
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 8.0.w ,vertical: 5.0.h),
+            padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,31 +60,24 @@ class ProductDetails extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                         Wrap(
-                           direction: Axis.vertical,
-                           spacing: .5,
-                           children: [
-                             Text(
-                              'Classic Hoodie',
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                color: K.blackColor,
-                                fontFamily: "Poppins-Bold",
-                              ),
-                        ),Text(
-                               'Boomboogie',
-                               style: TextStyle(
-                                 color: K.grayColor,
-                                 fontSize: 16.sp,
-                               ),
-                             ),
-                           ],
-                         ),SizedBox(width: 6.w,),
+                        Text(
+                          productModel!.name!,
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            color: K.blackColor,
+                            fontFamily: "Poppins-Bold",
+                          ),
+                        ),
+                        SizedBox(
+                          width: 6.w,
+                        ),
                         const Icon(
                           Icons.star,
                           color: Colors.amber,
                         ),
-                        Text(' 4.7', style: TextStyle(color: Colors.black.withOpacity(.6))),
+                        Text(productModel!.rate!,
+                            style:
+                                TextStyle(color: Colors.black.withOpacity(.6))),
                       ],
                     ),
                     Row(
@@ -101,9 +88,9 @@ class ProductDetails extends StatelessWidget {
                         ),
                         Obx(() => IconButton(
                             onPressed: () {
-                              controller.checkFun();
+                              _controller.checkFun();
                             },
-                            icon: controller.check.value
+                            icon: _controller.check.value
                                 ? const Icon(
                                     Icons.favorite,
                                     color: K.mainColor,
@@ -116,7 +103,14 @@ class ProductDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                K.sizedBoxH,
+                Text(
+                  'Boomboogie',
+                  style: TextStyle(
+                    color: K.grayColor,
+                    fontSize: 16.sp,
+                  ),
+                ),
+                SizedBox(height: 10.h),
                 Text(
                   'Description\n',
                   style: TextStyle(
@@ -124,8 +118,8 @@ class ProductDetails extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 18.sp),
                 ),
-                 Text(
-                  'The Under Armour Mens Rival Cotton Sweatshirt delivers comfortable, casual winter comfort. Constructed from mid-weight performance cotton a brushed fleece interior it delivers a warm and cosy fit that  sure to keep your body temps ',
+                AutoSizeText(
+                  productModel!.description!,
                   // maxLines: 4,
                   style: TextStyle(
                     fontSize: 14.sp,
@@ -141,7 +135,7 @@ class ProductDetails extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Text(
+                        Text(
                           'Colors',
                           style: TextStyle(
                             fontSize: 18.sp,
@@ -149,50 +143,63 @@ class ProductDetails extends StatelessWidget {
                             fontFamily: "Poppins-Bold",
                           ),
                         ),
-                        Row(children: [
-                          SizedBox(
-                            height: 38.h,
-                            child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemCount: 4,
-                                itemBuilder: (ctx, index) => ContainerColors(
-                                      color: K.colorList[index],
-                                    )),
-                          ),
-                        ])
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                height: 50.h,
+                                child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemCount: productModel!.colors!.length,
+                                    itemBuilder: (ctx, index) => Padding(
+                                          padding: const EdgeInsets.all(4),
+                                          child: Container(
+                                            height: 35.h,
+                                            width: 35.w,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color:
+                                                    Color(StringToHex.toColor(
+                                                  productModel!.colors![index],
+                                                ))),
+                                          ),
+                                        )),
+                              ),
+                            ])
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children:  [
-                        Text(
-                          'Price',
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: "Poppins SemiBold",
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Price',
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Poppins SemiBold",
+                            ),
                           ),
-                        ),
-                        Text(
-                          '\$75.00 ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 30.sp,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
+                          Text(
+                            '${productModel!.price!}LE',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                K.sizedBoxH,
               ],
             ),
           ),
           K.sizedBoxH,
-
           AddButton(
             text: 'Add to cart',
             onPressed: () {},

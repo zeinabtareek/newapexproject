@@ -1,7 +1,14 @@
 import 'package:get/get.dart';
 import 'package:newapexproject/controller/base_controller.dart';
+import 'package:newapexproject/model/category_model.dart';
+import 'package:newapexproject/model/products_model.dart';
+import 'package:newapexproject/services/home_services.dart';
+import 'package:newapexproject/services/products_services.dart';
 
 class ProductScreenController extends BaseController {
+  final _services = CategoryServices();
+  final docs = <ProductModel>[].obs;
+
   final List<String> labels = ['see all', 'Bags', 'Women fashion', 'shoes'];
   final List<String> productsText = [
     'Classic Hoodie',
@@ -25,6 +32,10 @@ class ProductScreenController extends BaseController {
   }
 
   checkFun() {
-    check.value =! check.value;
+    check.value = !check.value;
+  }
+
+  getDocs(String id, String key) async {
+    docs.assignAll(await _services.getCategoryDocs(id, key));
   }
 }
