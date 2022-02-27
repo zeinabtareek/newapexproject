@@ -13,7 +13,7 @@ class K {
   static final width = Get.width;
   static final height = Get.height;
 
-  static  SizedBox sizedBoxH = SizedBox(
+  static SizedBox sizedBoxH = SizedBox(
     height: 15.h,
   );
   static SizedBox sizedBoxW = SizedBox(
@@ -28,5 +28,9 @@ class K {
   static int MobileBreakpoint = 576;
   static int TabletBreakpoint = 1024;
   static int DesktopBreakPoint = 1366;
-
+  static const textStyleAlert = TextStyle(
+      fontSize: 18.0,
+      decoration: TextDecoration.none,
+      decorationStyle: TextDecorationStyle.dashed,
+      decorationColor: Color(0x00ffffff));
 }

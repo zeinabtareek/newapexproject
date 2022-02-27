@@ -12,7 +12,7 @@ class ProductCard extends StatelessWidget {
   final String? discount;
   final String? text;
   final bool? inStock;
-  final String? rate;
+  final double? rate;
   final Function()? onTap;
 
   const ProductCard({
@@ -61,7 +61,7 @@ class ProductCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RatingBarIndicator(
-                        rating: 2.75,
+                        rating: rate!,
                         itemBuilder: (context, index) => const Icon(
                           Icons.star,
                           color: Colors.amber,
@@ -71,7 +71,7 @@ class ProductCard extends StatelessWidget {
                         direction: Axis.horizontal,
                       ),
                       Text(
-                        rate!,
+                        rate!.toString(),
                         style: TextStyle(
                           color: K.grayColor,
                           fontSize: 14.sp,

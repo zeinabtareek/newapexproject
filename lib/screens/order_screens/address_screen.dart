@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/component/address_text_field.dart';
 import 'package:newapexproject/component/appbar.dart';
-import 'package:newapexproject/component/text_field.dart';
 import 'package:newapexproject/routes/app_route.dart';
 
 import '../../constant.dart';

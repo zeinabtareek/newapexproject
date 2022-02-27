@@ -5,7 +5,7 @@ class ProductModel {
   String? name;
   String? price;
   String? discount;
-  String? rate;
+  double? rate;
   String? key;
   bool? inStock;
   List? images;

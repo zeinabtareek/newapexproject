@@ -1,11 +1,8 @@
-
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/component/fixed_list_tile.dart';
-import '../../data.dart';
 import '../order_screens/address_screen.dart';
 import 'controller/setting_controller.dart';
 

@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:newapexproject/screens/cart_screen/cart_screen.dart';
-import 'package:newapexproject/screens/favorite_screen/favorite_screen.dart';
 import 'package:newapexproject/screens/home_screen/home_screen.dart';
-import 'package:newapexproject/screens/product_screen/products_screen.dart';
 import 'package:newapexproject/screens/profile_screen/profile_screen.dart';
 import 'package:newapexproject/screens/setting_screen/setting_screen.dart';
 
@@ -18,7 +16,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> body = [
       HomeScreen(),
-      ProductScreen(),
       CartScreen(),
       SettingScreen(),
       ProfileScreen(),
@@ -38,12 +35,6 @@ class Home extends StatelessWidget {
                       MdiIcons.storeSettings,
                     ),
                     label: 'Home',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      MdiIcons.tshirtCrewOutline,
-                    ),
-                    label: 'Categories',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(

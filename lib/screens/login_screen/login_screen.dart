@@ -82,7 +82,8 @@ class LoginScreen extends StatelessWidget {
               RegisterButton(
                 key: key,
                 function: () {
-                  _controller.log();
+                  _controller.log(context);
+
                 },
                 label: "Login",
               ),

@@ -8,7 +8,6 @@ import 'package:newapexproject/screens/home_screen/home_screen.dart';
 import 'package:newapexproject/screens/login_screen/login_screen.dart';
 import 'package:newapexproject/screens/order_screens/address_screen.dart';
 import 'package:newapexproject/screens/product_details/product_details.dart';
-import 'package:newapexproject/screens/product_screen/products_screen.dart';
 import 'package:newapexproject/screens/profile_screen/profile_screen.dart';
 import 'package:newapexproject/screens/register_screen/register_screen.dart';
 import 'package:newapexproject/screens/splash_screen.dart';
