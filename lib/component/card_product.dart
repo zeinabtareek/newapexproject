@@ -3,10 +3,18 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:newapexproject/component/load_image.dart';
+import 'package:newapexproject/model/cart_model.dart';
+import 'package:newapexproject/model/products_model.dart';
+import 'package:newapexproject/screens/cart_screen/cart_controller/cart_controller.dart';
+
 import '../constant.dart';
 
 class ProductCard extends StatelessWidget {
+
+
+
   final String? image;
   final int? price;
   final String? discount;
@@ -14,8 +22,9 @@ class ProductCard extends StatelessWidget {
   final bool? inStock;
   final int? rate;
   final Function()? onTap;
+  final Function()? addToCart;
 
-  const ProductCard({
+   ProductCard({
     Key? key,
     this.image,
     this.onTap,
@@ -23,11 +32,13 @@ class ProductCard extends StatelessWidget {
     this.inStock,
     this.text,
     this.price,
+     this.addToCart,
     this.discount,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: onTap,
       child: Material(
@@ -110,25 +121,26 @@ class ProductCard extends StatelessWidget {
                           ),
                         )
                       : SizedBox(),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: SizedBox(
-                      height: 40.h,
-                      width: 120.w,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: K.blackColor),
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(
-                              EvaIcons.shoppingCartOutline,
-                              color: K.whiteColor,
-                              size: 15.sp,
-                            ),
-                            AutoSizeText(
-                              'Add to Cart',
-                              style: TextStyle(
-                                  color: K.whiteColor,
+                 Align(
+                            alignment: Alignment.bottomRight,
+                            child: SizedBox(
+                              height: 40.h,
+                              width: 120.w,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    primary: K.blackColor),
+                                onPressed: addToCart,
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      EvaIcons.shoppingCartOutline,
+                                      color: K.whiteColor,
+                                      size: 15.sp,
+                                    ),
+                                    AutoSizeText(
+                                      'Add to Cart',
+                                      style: TextStyle(
+                                          color: K.whiteColor,
                                   fontSize: 7.sp,
                                   fontWeight: FontWeight.w400),
                             ),
@@ -136,7 +148,7 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                   ),
                 ],
               ),
             ),

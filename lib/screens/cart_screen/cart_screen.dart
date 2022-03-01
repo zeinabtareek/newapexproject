@@ -45,7 +45,9 @@ class CartScreen extends StatelessWidget {
                                 increase: () {
                                   controller.increaseQuentity(index );
                                 },
-                                clear: () {controller.deleteProduct(controller.cartProductModel[index].name.toString());},
+                                clear: () {
+                                  controller.deleteProduct(controller.cartProductModel[index].name.toString());
+                                },
                               );
                   }),
               K.sizedBoxH,

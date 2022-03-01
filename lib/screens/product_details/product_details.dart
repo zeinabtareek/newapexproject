@@ -1,10 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/model/cart_model.dart';
-import 'package:newapexproject/model/product_details_model.dart';
 import 'package:newapexproject/screens/cart_screen/cart_controller/cart_controller.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

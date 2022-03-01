@@ -10,9 +10,9 @@ class CartController extends BaseController {
   List<CartProductModel> get cartProductModel=>_cartProductModel;
   final  _totalPrice = 0.0.obs;
   double get totalPrice =>_totalPrice.value;
- final  _shippingPrice = 0.0.obs;
+  final  _shippingPrice = 0.0.obs;
   double get shippingPrice =>_shippingPrice.value;
-final  _totalPriceWithShipping = 0.0.obs;
+  final  _totalPriceWithShipping = 0.0.obs;
   double get totalPriceWithShipping =>_totalPriceWithShipping.value;
 
 
@@ -68,17 +68,15 @@ final  _totalPriceWithShipping = 0.0.obs;
       _cartProductModel[index].quantity--;
       _totalPrice.value-=(double.parse('${_cartProductModel[index].price}')
       );
+
       await dbHelper.updateProduct(_cartProductModel[index]);
     }
-    else if(_cartProductModel[index].quantity <=1 ){
+    else if(_cartProductModel[index].quantity <=1){
       _totalPrice.value=0;
-      _shippingPrice.value=0;
       _cartProductModel[index].quantity=0;
       deleteProduct(_cartProductModel[index].name.toString());
-    }
-    _totalPriceWithShipping.value = _totalPrice.value+ _shippingPrice.value;
-    update();
-
+      _totalPriceWithShipping.value -= _totalPrice.value+ _shippingPrice.value;
+    }update();
   }
 
   getTotalPrice() {
@@ -88,21 +86,17 @@ final  _totalPriceWithShipping = 0.0.obs;
     for (int i = 0; i < _cartProductModel.length; i++) {
       _totalPrice.value +=
           double.parse(_cartProductModel[i].price.toString()) *
-              _cartProductModel[i].quantity;
-    }
+              _cartProductModel[i].quantity;}
     _totalPriceWithShipping.value += _totalPrice.value + _shippingPrice.value;
-
     print(_totalPrice);
     update();
   }
 
   deleteProduct(String name) async {
-
     await dbHelper.deleteProduct(name);
     getAllProductList();
     getTotalPrice();
     _totalPrice.value=0.0;
-    _totalPriceWithShipping.value=0.0;
     update();
   }
   deleteAllProduct() async {
@@ -111,5 +105,4 @@ final  _totalPriceWithShipping = 0.0.obs;
     getTotalPrice();
     update();
   }
-
 }

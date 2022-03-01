@@ -63,6 +63,7 @@ dependencies:
   cloud_firestore: ^3.1.7
   firebase_storage: ^8.1.0
   sqflite:
+  badges: ^2.0.2
 
 
 
