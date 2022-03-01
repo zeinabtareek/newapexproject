@@ -205,7 +205,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -213,9 +213,9 @@
 			name = "Thin Binary";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin\n";
+			shellScript = "/bin/sh \"${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin\n";
 		};
 		47C2D2C1E67D3968409006E0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -241,7 +241,7 @@
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -249,9 +249,9 @@
 			name = "Run Script";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+			shellScript = "/bin/sh \"${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 			showEnvVarsInLog = 0;
 		};
 		A03D1688F6FEFFCF8B47A7ED /* [CP] Embed Pods Frameworks */ = {

@@ -254,6 +254,7 @@ class CheckOutScreen extends StatelessWidget {
               ),
               K.sizedBoxH,
               PaymentGroupe(),
+
               AddButton(
                 text: 'Place Order',
                 onPressed: () {

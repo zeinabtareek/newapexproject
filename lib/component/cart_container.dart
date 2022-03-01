@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../constant.dart';
@@ -12,31 +13,49 @@ class Cart extends StatelessWidget {
   final String? image;
   final String? label;
   final String? price;
+  final int? quantity;
 
   const Cart(
       {Key? key,
-        this.label,
-        this.price,
-        this.image,
-        this.clear,
-        this.decrease,
-        this.increase})
+      this.label,
+      this.price,
+      this.image,
+      this.clear,
+      this.quantity,
+      this.decrease,
+      this.increase})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape:
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      color: K.whiteColor,
+    return Slidable(
+      actionExtentRatio: 0.25,
+      secondaryActions: <Widget>[
+        Container(
+          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+          child: IconSlideAction(
+            caption: 'Delete',
+            color: K.mainColor,
+            icon: Icons.delete,
+            onTap: clear,
+          ),
+        ),
+      ],
+      actionPane: const SlidableDrawerActionPane(),
       child: SizedBox(
-        height: 130.h,
-        width: K.width,
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
+
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          color: K.whiteColor,
+          child: SizedBox(
+            height: 130.h,
+            width: K.width,
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
                   topLeft: Radius.circular(10),
                   bottomRight: Radius.circular(2),
                   topRight: Radius.circular(2)),
@@ -89,32 +108,34 @@ class Cart extends StatelessWidget {
                               fontWeight: FontWeight.w600),
                         ),
                         IconButton(
-                          onPressed: increase,
-                          icon:  Icon(MdiIcons.minusCircle,
-                              size: 20.sp,
-                              color: K.mainColor),
-                        ),
-                         Text(
-                          '2',
-                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.sp),
-                        ),
-                        IconButton(
                           onPressed: decrease,
-                          icon:  Icon(
-                            MdiIcons.plusCircle,
-                            size: 20.sp,
-                            color: K.mainColor,
-                          ),
-                        ),
+                              icon: Icon(MdiIcons.minusCircle,
+                                  size: 20.sp, color: K.mainColor),
+                            ),
+                        Text(
+                              quantity.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16.sp),
+                            ),
+                        IconButton(
+                          onPressed: increase,
+                              icon: Icon(
+                                MdiIcons.plusCircle,
+                                size: 20.sp,
+                                color: K.mainColor,
+                              ),
+                            ),
                       ],
                     ),
                   ],
                 ),
               ),
             ),
-          ],
+              ],
+            ),
+          ),
         ),
-      ),
+        ),
     );
 }
 }

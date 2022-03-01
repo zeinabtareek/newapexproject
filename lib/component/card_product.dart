@@ -8,11 +8,11 @@ import '../constant.dart';
 
 class ProductCard extends StatelessWidget {
   final String? image;
-  final String? price;
+  final int? price;
   final String? discount;
   final String? text;
   final bool? inStock;
-  final double? rate;
+  final int? rate;
   final Function()? onTap;
 
   const ProductCard({
@@ -61,7 +61,7 @@ class ProductCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RatingBarIndicator(
-                        rating: rate!,
+                        rating: rate!.toDouble(),
                         itemBuilder: (context, index) => const Icon(
                           Icons.star,
                           color: Colors.amber,

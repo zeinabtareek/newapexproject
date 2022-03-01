@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ProductModel {
   String? image;
   String? name;
-  String? price;
+  int? price;
   String? discount;
-  double? rate;
+  int? rate;
   String? key;
   bool? inStock;
   List? images;

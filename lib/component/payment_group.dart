@@ -1,16 +1,30 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:newapexproject/screens/cart_screen/cart_controller/cart_controller.dart';
 
 import '../constant.dart';
 
 class PaymentGroupe extends StatelessWidget {
+
+  final double? Total;
+  final double ?subTotal;
+  final double ?shipping;
+
+
   const PaymentGroupe({
     Key? key,
-  }) : super(key: key);
+    this.subTotal,
+     this.shipping,
+      this.Total,
+
+    })
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Row(
@@ -23,7 +37,7 @@ class PaymentGroupe extends StatelessWidget {
               ),
             ),
             AutoSizeText(
-              '\$360.00',
+              '\$ ${subTotal}',
               style: TextStyle(
                   fontWeight: FontWeight.w500, fontSize:16.sp,
                   color: K.mainColor),
@@ -40,7 +54,7 @@ class PaymentGroupe extends StatelessWidget {
                   fontWeight: FontWeight.w500, fontSize:16.sp, height: 2.h),
             ),
             AutoSizeText(
-              '\$40.00',
+              '\$ $shipping',
               style: TextStyle(
                   fontWeight: FontWeight.w600, fontSize:16.sp,
                   color: K.mainColor,
@@ -51,13 +65,12 @@ class PaymentGroupe extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:  [
-            AutoSizeText(
-              'Total',
+            AutoSizeText('Total',
               style: TextStyle(
                   fontWeight: FontWeight.w600, fontSize:18.sp, height: 3.h),
             ),
             AutoSizeText(
-              '\$400.00',
+              '\$ ${Total}',
               style: TextStyle(
                   fontWeight: FontWeight.w600, fontSize:18.sp,
                   color: K.mainColor,

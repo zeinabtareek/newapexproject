@@ -1,4 +1,4 @@
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,36 +9,67 @@ import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/component/cart_container.dart';
 import 'package:newapexproject/screens/order_screens/address_screen.dart';
 import '../../constant.dart';
+import 'cart_controller/cart_controller.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({Key? key}) : super(key: key);
+   CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: CustomAppBar(label: "Cart",
-      actions: [Icon(EvaIcons.shoppingCart, color: K.mainColor,), SizedBox(width: 6.w),],
+
+    return Scaffold(appBar: CustomAppBar(label: "Cart", actions: [Icon(EvaIcons.shoppingCart, color: K.mainColor,), SizedBox(width: 6.w),],
     ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Wrap(
+          padding:  EdgeInsets.symmetric(horizontal: 8.0.w ,vertical: 8.0.h),
+          child: GetBuilder<CartController>(
+            init:CartController() ,
+            builder:(controller)=> controller.cartProductModel.length == 0
+                ? Center(
+              child: Text("Empty"),
+            ): Wrap(
             children: [
-              ListView.builder(
-                  itemCount: 4,
+               ListView.builder(
+                  itemCount: controller.cartProductModel.length,
                   shrinkWrap: true,
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Cart(
-                                price: "\$250",
-                                label: "Fashion",
-                                image: "https://api.khofow.com/storage/uploads/TSDEqe-1638228474.jpg",
-                                decrease: () {},
-                                increase: () {},
-                                clear: () {},
+                                price: controller.cartProductModel[index].price.toString(),
+                                label: controller.cartProductModel[index].name.toString(),
+                                image:controller.cartProductModel[index].image.toString(),
+                                quantity: controller.cartProductModel[index].quantity,
+                                decrease: () {
+                                  controller.decreaseQuentity(index);
+                                },
+                                increase: () {
+                                  controller.increaseQuentity(index );
+                                },
+                                clear: () {controller.deleteProduct(controller.cartProductModel[index].name.toString());},
                               );
                   }),
               K.sizedBoxH,
-              PaymentGroupe(),
+              GestureDetector(
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric
+                      (horizontal: 8.0.w ,vertical: 8.0.h),
+                    child: AutoSizeText(' Clear all ' ,style: TextStyle(color :K.cardColor ,),),
+                  ),
+                ),
+                onTap: (){
+                  controller.deleteAllProduct();
+                },
+              ),
+              K.sizedBoxH,
+              K.sizedBoxH,
+
+              PaymentGroupe(
+                subTotal:  controller.totalPrice,
+                shipping: 30,
+                Total:  controller.totalPriceWithShipping,
+                ),
               Center(
                 child: AddButton(
                   text: 'Checkout',
@@ -50,7 +81,7 @@ class CartScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      ),),
     );
   }
 }
