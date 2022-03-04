@@ -10,3 +10,5 @@ const String columnPrice='price';
 const String columnRate='rate';
 
 
+
+const String tableCartFavourite='tableCartFavourite';

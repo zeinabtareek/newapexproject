@@ -1,8 +1,10 @@
+import 'package:get/get.dart';
 import 'package:newapexproject/constant.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:newapexproject/routes/app_route.dart';
 
 import '../constant.dart';
 
@@ -40,10 +42,15 @@ class AppBarHomeScreen extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       actions: [
-        Icon(
-          MdiIcons.cartOutline,
-          color: K.blackColor,
-        ),
+        InkWell(
+          child: Icon(
+            MdiIcons.cartOutline,
+            color: K.blackColor,
+          ),
+    onTap: () {
+    Get.toNamed(AppRoutes.cartScreen);
+    }),
+
         SizedBox(
           width: 5.w,
         ),

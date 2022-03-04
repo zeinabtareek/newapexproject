@@ -8,6 +8,7 @@ import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/routes/app_route.dart';
 
 import '../../constant.dart';
+import 'map/screen/my_location_screen.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({Key? key}) : super(key: key);
@@ -61,8 +62,21 @@ class AddressScreen extends StatelessWidget {
                 ),
                 K.sizedBoxH,
                 K.sizedBoxH,
-                AddressTextField(
-                  label: 'Address',
+                Stack(
+                  children: [
+                    AddressTextField(
+                      label: 'Address',
+                    ),
+                    Positioned(
+                      right: 2.w,
+                      top: 0.h,
+                      bottom: 0.h,
+                      child: IconButton(onPressed: (){
+                        Get.to(MyLocationScreen());
+
+                      }, icon: Icon(Icons.location_on_outlined,color: K.mainColor,))),
+
+                  ],
                 ),
                 K.sizedBoxH,
                 AutoSizeText(

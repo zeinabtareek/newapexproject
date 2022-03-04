@@ -20,6 +20,7 @@ class HomeServices {
     return data.docs.map((e) => CategoryModel.fromJson(e)).toList();
   }
 
+
   Future<BannerModel> getBanner() async {
     Response response =
         await _dio.get('https://student.valuxapps.com/api/banners');

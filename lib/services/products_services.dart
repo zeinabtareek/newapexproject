@@ -15,4 +15,13 @@ class CategoryServices {
     print(data.size);
     return data.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
   }
+
+
+Future<List<ProductModel>> seeAll(String id)async{
+  final data=await _store.collection('category')
+      .doc(id)
+      .collection('data')
+      .get();
+  return data.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+  }
 }

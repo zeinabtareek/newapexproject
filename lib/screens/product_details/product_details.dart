@@ -3,19 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
 import 'package:newapexproject/model/cart_model.dart';
+import 'package:newapexproject/model/favorite_model.dart';
 import 'package:newapexproject/screens/cart_screen/cart_controller/cart_controller.dart';
+import 'package:newapexproject/screens/favorite_screen/favorite_controller/favorite_controller.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/component/indicator.dart';
 import 'package:newapexproject/component/load_image.dart';
 import 'package:newapexproject/model/products_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:string_to_hex/string_to_hex.dart';
 import '../../constant.dart';
 import 'controller/product_details_controller.dart';
 
 class ProductDetails extends StatelessWidget {
-   ProductDetails({Key? key, this.productModel}) : super(key: key);
+   ProductDetails({Key? key, this.productModel, }) : super(key: key);
   final ProductModel? productModel;
+   FavouriteModel favouriteModel=FavouriteModel();
   @override
   Widget build(BuildContext context) {
     final _controller = Get.put(ProductDetailsController());
@@ -98,11 +102,18 @@ class ProductDetails extends StatelessWidget {
                             color: K.grayColor,
                           ),
                         ),
-                        Obx(() => IconButton(
+                        GetBuilder<FavoriteController>(
+                            init: FavoriteController(),
+                            builder:(controller){ 
+                              // final x=controller.favoriteList.firstWhere((element) => element.id==productModel!.key,orElse: ()=>null);
+                             return IconButton(
                             onPressed: () {
-                              _controller.checkFun();
+                             controller.isChecked();
+                             // controller.check==true?
+                             controller.addToFavorite(favouriteModel);
+                             // controller.addToFavorite(favouriteModel.name.toString()):controller.removefromFavorite(favouriteModel);
                             },
-                            icon: _controller.check.value
+                            icon: controller.check.value
                                 ? const Icon(
                                     Icons.favorite,
                                     color: K.mainColor,
@@ -110,7 +121,10 @@ class ProductDetails extends StatelessWidget {
                                 : const Icon(
                                     Icons.favorite_border_outlined,
                                     color: K.grayColor,
-                                  )))
+                                  ),
+                              );
+                            }
+                        ),
                       ],
                     ),
                   ],

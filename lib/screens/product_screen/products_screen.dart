@@ -70,9 +70,14 @@ class ProductScreen extends StatelessWidget {
                                 ? K.mainColor
                                 : K.whiteColor,
                             onTap: () {
+                               _controller.selected(index)!=0?
                               _controller.getDocs(id!,
-                                  HomeScreenController.to.docs[index].key!);
+                                  HomeScreenController.to.docs[index].key!):
+                                   _controller.getallDocs(id!);
                               _controller.selected(index);
+                              // _controller.getDocs(id!,
+                              //     HomeScreenController.to.docs[index].key!);
+                              // _controller.selected(index);
                             },
                           ),
                         ),
