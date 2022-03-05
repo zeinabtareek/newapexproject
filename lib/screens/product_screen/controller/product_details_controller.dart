@@ -36,4 +36,12 @@ class ProductScreenController extends BaseController {
   getDocs(String id, String key) async {
     docs.assignAll(await _services.getCategoryDocs(id, key));
   }
+
+
+
+
+  getallDocs(String id) async {
+    docs.assignAll(await _services.seeAll(id));
+  }
+
 }

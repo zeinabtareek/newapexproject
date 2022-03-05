@@ -2,19 +2,24 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapexproject/component/add_button.dart';
+import 'package:newapexproject/model/cart_model.dart';
+import 'package:newapexproject/model/favorite_model.dart';
+import 'package:newapexproject/screens/cart_screen/cart_controller/cart_controller.dart';
+import 'package:newapexproject/screens/favorite_screen/favorite_controller/favorite_controller.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newapexproject/component/indicator.dart';
 import 'package:newapexproject/component/load_image.dart';
 import 'package:newapexproject/model/products_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:string_to_hex/string_to_hex.dart';
 import '../../constant.dart';
 import 'controller/product_details_controller.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({Key? key, this.productModel}) : super(key: key);
+   ProductDetails({Key? key, this.productModel, }) : super(key: key);
   final ProductModel? productModel;
-
+   FavouriteModel favouriteModel=FavouriteModel();
   @override
   Widget build(BuildContext context) {
     final _controller = Get.put(ProductDetailsController());
@@ -26,7 +31,6 @@ class ProductDetails extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: MediaQuery.of(context).size.height / 1.5,
-            // height: K.height / 3.h,
             child: Stack(
               children: [
                 PageView.builder(
@@ -98,11 +102,18 @@ class ProductDetails extends StatelessWidget {
                             color: K.grayColor,
                           ),
                         ),
-                        Obx(() => IconButton(
+                        GetBuilder<FavoriteController>(
+                            init: FavoriteController(),
+                            builder:(controller){ 
+                              // final x=controller.favoriteList.firstWhere((element) => element.id==productModel!.key,orElse: ()=>null);
+                             return IconButton(
                             onPressed: () {
-                              _controller.checkFun();
+                             controller.isChecked();
+                             // controller.check==true?
+                             controller.addToFavorite(favouriteModel);
+                             // controller.addToFavorite(favouriteModel.name.toString()):controller.removefromFavorite(favouriteModel);
                             },
-                            icon: _controller.check.value
+                            icon: controller.check.value
                                 ? const Icon(
                                     Icons.favorite,
                                     color: K.mainColor,
@@ -110,7 +121,10 @@ class ProductDetails extends StatelessWidget {
                                 : const Icon(
                                     Icons.favorite_border_outlined,
                                     color: K.grayColor,
-                                  )))
+                                  ),
+                              );
+                            }
+                        ),
                       ],
                     ),
                   ],
@@ -219,16 +233,28 @@ class ProductDetails extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          K.sizedBoxH,
-          AddButton(
+          ), K.sizedBoxH,
+          GetBuilder<CartController>(
+            init: CartController(),
+            builder:(controller)=>  AddButton(
             text: 'Add to cart',
-            onPressed: () {},
-          ),
-          K.sizedBoxH,
-          K.sizedBoxH
-        ],
+            onPressed: () {
+              controller.addToCart( CartProductModel(
+                name: productModel!.name.toString(),
+                image: productModel!.image.toString(),
+                price: productModel!.price,
+                productId:productModel!.key.toString(),
+                // rate: productDetailsModel.rate,
+                quantity: 1,
+               )
+              );
+             },
+            ),
+           ), K.sizedBoxH,
+              K.sizedBoxH,
+           ],
+         ),
       ),
-    ));
+    );
   }
 }

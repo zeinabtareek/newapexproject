@@ -15,10 +15,11 @@ class HomeServices {
 
   Future<List<CategoryModel>> getCategoryDocs(String id) async {
     final data =
-        await _store.collection('category').doc(id).collection('data').get();
+        await _store.collection('category').doc(id).collection('data').orderBy('name',descending: false).get();
     print(data.size);
     return data.docs.map((e) => CategoryModel.fromJson(e)).toList();
   }
+
 
   Future<BannerModel> getBanner() async {
     Response response =

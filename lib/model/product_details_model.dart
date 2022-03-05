@@ -1,14 +1,14 @@
 class ProductDetailsModel {
   String? image;
   String? name;
-  String? price;
-  String? rate;
+  int? price;
+  int? rate;
   String? key;
   String? shortDescription;
   String? longDescription;
 
   ProductDetailsModel(
-      {this.image,
+      { this.image,
         this.name,
         this.price,
         this.rate,

@@ -22,10 +22,10 @@ class AppScreens {
     GetPage(name: AppRoutes.registerScreen, page: () => const RegisterScreen()),
     GetPage(
         name: AppRoutes.productDetailsScreen,
-        page: () => const ProductDetails()),
+        page: () =>  ProductDetails()),
     // GetPage(name: AppRoutes.productScreen, page: () => const ProductsScreen()),
     GetPage(name: AppRoutes.profileScreen, page: () => const ProfileScreen()),
-    GetPage(name: AppRoutes.cartScreen, page: () => const CartScreen()),
+    GetPage(name: AppRoutes.cartScreen, page: () =>  CartScreen()),
     GetPage(name: AppRoutes.addressScreen, page: () => const AddressScreen()),
     GetPage(name: AppRoutes.checksScreen, page: () => const CheckOutScreen()),
     GetPage(name: AppRoutes.paymentScreen, page: () => const PaymentScreen()),

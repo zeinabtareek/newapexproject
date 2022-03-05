@@ -5,8 +5,9 @@ import '../constant.dart';
 
 class AddressTextField extends StatelessWidget {
  final String label;
+ final bool ?map;
   const AddressTextField({
-    Key? key,required this.label
+    Key? key,required this.label, this.map
   }) : super(key: key);
 
   @override
@@ -14,7 +15,7 @@ class AddressTextField extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: 400.w,
-        child: TextField(cursorHeight: 30,
+        child:TextField(cursorHeight: 30,
           // onChanged:(){},
           cursorColor: K.mainColor,
           decoration: InputDecoration(
@@ -34,8 +35,9 @@ class AddressTextField extends StatelessWidget {
               // borderSide: BorderSide(color: K.grayColor,
             ),
           ),
-        ),
-      ),
+        )
+        )
+
     );
   }
 }
