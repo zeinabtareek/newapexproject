@@ -258,7 +258,7 @@ class CheckOutScreen extends StatelessWidget {
               AddButton(
                 text: 'Place Order',
                 onPressed: () {
-                  Get.to(AddressScreen());
+                  Get.to(AddressScreen(address:'',));
                 },
               ),
             ],

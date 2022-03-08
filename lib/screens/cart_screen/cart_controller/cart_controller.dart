@@ -12,18 +12,15 @@ class CartController extends BaseController {
   double get totalPrice =>_totalPrice.value;
   final  _shippingPrice = 0.0.obs;
   double get shippingPrice =>_shippingPrice.value;
+
   final  _totalPriceWithShipping = 0.0.obs;
   double get totalPriceWithShipping =>_totalPriceWithShipping.value;
+  final  _eachItemTotalPrice = 0.obs;
+  int get eachItemTotalPrice =>_eachItemTotalPrice.value;
 
-
-  @override
-  void onInit() async {
-    super.onInit();
+  CartController(){
     getAllProductList();
     getTotalPrice();
-    _totalPriceWithShipping.value = _totalPrice.value+ _shippingPrice.value;
-
-
   }
 
   addToCart(CartProductModel cartProductModel)async{
@@ -63,9 +60,12 @@ class CartController extends BaseController {
     _totalPrice.value+=(double.parse('${_cartProductModel[index].price}'));
     dbHelper.updateProduct(_cartProductModel[index]);
     _totalPriceWithShipping.value = _totalPrice.value+ _shippingPrice.value;
-
+    // getEachItemTotalPrice(
+    //   _cartProductModel[index].productId.toString(),
+    //   index,
+    // );
+    print(_cartProductModel[index].price);
     update();
-
   }
   decreaseQuentity(int index)async{
     if(_cartProductModel[index].quantity !=0){
@@ -82,20 +82,31 @@ class CartController extends BaseController {
       _cartProductModel[index].quantity=0;
       deleteProduct(_cartProductModel[index].name.toString());
       _totalPriceWithShipping.value -= _totalPrice.value+ _shippingPrice.value;
-    }update();
+    }
+    update();
   }
-
   getTotalPrice() {
-    // _totalPrice.value = 0;
      _shippingPrice.value = 30;
     for (int i = 0; i < _cartProductModel.length; i++) {
       _totalPrice.value +=
           double.parse(_cartProductModel[i].price.toString()) *
               _cartProductModel[i].quantity;
     }
-
+     getTotal( _totalPrice.value);
     print(_totalPrice);
     update();
+  }
+  // getEachItemTotalPrice(String productKey,int index){
+  //       if(productKey==_cartProductModel[index].productId){
+  //
+  //     update();
+  //     }
+  //   }
+
+  getTotal(double x){
+    _totalPriceWithShipping.value=x+_shippingPrice.value;
+    return _totalPriceWithShipping;
+
   }
 
   deleteProduct(String name) async {
@@ -103,6 +114,8 @@ class CartController extends BaseController {
     getAllProductList();
     getTotalPrice();
     _totalPrice.value=0.0;
+    _eachItemTotalPrice.value=0;
+
     update();
   }
   deleteAllProduct() async {
