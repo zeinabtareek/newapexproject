@@ -5,9 +5,10 @@ import '../constant.dart';
 
 class AddressTextField extends StatelessWidget {
  final String label;
+ final String ? addresslabel;
  final bool ?map;
   const AddressTextField({
-    Key? key,required this.label, this.map
+    Key? key,required this.label, this.map, this.addresslabel
   }) : super(key: key);
 
   @override
@@ -22,7 +23,9 @@ class AddressTextField extends StatelessWidget {
             isDense: true,
             contentPadding:EdgeInsets.symmetric
               (horizontal: 20.0.w ,vertical: 30.0.h),
+            prefixText: addresslabel,
             hintText: label,
+
             hintStyle: TextStyle(color: K.grayColor,fontSize: 14.sp),
             fillColor: K.grayColor.withOpacity(.15),
             filled: true,

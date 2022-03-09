@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constant.dart';
-
 class AddButton extends StatelessWidget {
   final String? text;
   final Function()? onPressed;

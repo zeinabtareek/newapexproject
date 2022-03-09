@@ -5,16 +5,16 @@ import 'package:uuid/uuid.dart';
 class CartProductModel {
   String ?name;
   String? image;
-  int ?price;
+  int ?price ;
   String? productId;
   int quantity=1;
-
   CartProductModel({
      required this.quantity,
      this.name,
-     this.price,
+      this.price,
      this.image,
-     this.productId,
+    this.productId,
+    // this.totalprice,
   });
 
   CartProductModel.fromJson(Map<dynamic, dynamic> map){

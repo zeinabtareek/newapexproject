@@ -8,10 +8,12 @@ import 'package:newapexproject/component/appbar.dart';
 import 'package:newapexproject/routes/app_route.dart';
 
 import '../../constant.dart';
+import '../checkout_screens/map/map_screen.dart';
 import 'map/screen/my_location_screen.dart';
 
 class AddressScreen extends StatelessWidget {
-  const AddressScreen({Key? key}) : super(key: key);
+  String ? address;
+   AddressScreen({Key? key, this.address }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +67,16 @@ class AddressScreen extends StatelessWidget {
                 Stack(
                   children: [
                     AddressTextField(
-                      label: 'Address',
+                      addresslabel:address.toString()!=null?address.toString():'Address',
+                      label: address.toString()!=null?address.toString():'Address',
+
                     ),
                     Positioned(
                       right: 2.w,
                       top: 0.h,
                       bottom: 0.h,
                       child: IconButton(onPressed: (){
-                        Get.to(MyLocationScreen());
+                        Get.to(MapScreen());
 
                       }, icon: Icon(Icons.location_on_outlined,color: K.mainColor,))),
 

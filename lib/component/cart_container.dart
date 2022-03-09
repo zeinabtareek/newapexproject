@@ -101,7 +101,7 @@ class Cart extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text('$price \$',
+                        Text('${price!*quantity!} ',
                           style:  TextStyle(
                               fontSize: 16.sp,
                               color: K.mainColor,

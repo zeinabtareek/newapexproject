@@ -35,7 +35,7 @@ class CartScreen extends StatelessWidget {
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Cart(
-                                price: controller.cartProductModel[index].price.toString(),
+                                price: '',
                                 label: controller.cartProductModel[index].name.toString(),
                                 image:controller.cartProductModel[index].image.toString(),
                                 quantity: controller.cartProductModel[index].quantity,
