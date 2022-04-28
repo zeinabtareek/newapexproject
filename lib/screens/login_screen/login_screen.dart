@@ -83,7 +83,6 @@ class LoginScreen extends StatelessWidget {
                 key: key,
                 function: () {
                   _controller.log(context);
-
                 },
                 label: "Login",
               ),

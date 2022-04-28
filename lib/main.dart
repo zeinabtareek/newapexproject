@@ -13,39 +13,25 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-   MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final controller = Get.put(AuthController());
-  final favController = Get.put(FavoriteController());
-@override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    favController.getAllProductList()??'';
-  }
   @override
   Widget build(BuildContext context) {
+     final controller = Get.put(AuthController());
+
     VisualDensity.adaptivePlatformDensity;
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-
-    return  MediaQuery(
-      data: const MediaQueryData(
-      ),
-      child:ScreenUtilInit(
-        designSize: const Size (428,926),
-        builder :()=> GetMaterialApp(
+    return MediaQuery(
+      data: const MediaQueryData(),
+      child: ScreenUtilInit(
+        designSize: const Size(428, 926),
+        builder: () => GetMaterialApp(
           debugShowCheckedModeBanner: false,
           // home: ProductDetails(),
           initialRoute: AppRoutes.splashScreen,

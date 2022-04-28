@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:newapexproject/model/TokenModel.dart';
 import 'package:newapexproject/model/user_model.dart';
 
 class AuthServices {
@@ -10,6 +11,15 @@ class AuthServices {
 
   updateStorage(UserModel userModel) async {
     await _storage.write(key: 'users', value: userModel.key);
+  }
+
+  updateStorageApi(TokenModel userModel) async {
+    await _storage.write(key: 'user', value: userModel.token);
+  }
+
+  Future<TokenModel> getToken() async {
+    final userKey = await _storage.read(key: 'user');
+    return TokenModel(token: userKey, zoneWiseTopic: "");
   }
 
   Future<UserModel?> getCurrentUser() async {
