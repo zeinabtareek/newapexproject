@@ -76,7 +76,7 @@ class AddressScreen extends StatelessWidget {
                       top: 0.h,
                       bottom: 0.h,
                       child: IconButton(onPressed: (){
-                        Get.to(MapScreen());
+                        Get.to(()=>MapScreen());
 
                       }, icon: Icon(Icons.location_on_outlined,color: K.mainColor,))),
 

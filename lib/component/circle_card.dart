@@ -19,30 +19,35 @@ class CircleCard extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: onTap,
-            child: Material(
+            child: Container(
               clipBehavior: Clip.antiAlias,
-              elevation: 1,
-              borderRadius: BorderRadius.circular(50),
-              shadowColor: K.grayColor,
-              child: Container(
-                clipBehavior: Clip.antiAlias,
-                width: 75.w,
-                height: 75.h,
-                child: Center(
-                  child: Image.asset(
-                    images!,fit: BoxFit.contain,
-                    width: 60.w,
-                    height: 50.h,
-                  ),
+              width: 75.w,
+              height: 75.h,
+              child: Center(
+                child: Image.asset(
+                  images!,
+                  fit: BoxFit.contain,
+                  width: 60.w,
+                  height: 50.h,
                 ),
-                decoration: BoxDecoration(
-                  // border: Border.all(color: K.grayColor),
-                    color: K.whiteColor,
-                    shape: BoxShape.circle),
               ),
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(0.0, 1.0), //(x,y)
+                      blurRadius: 1.0,
+                    ),
+                  ],
+
+                  // border: Border.all(color: K.grayColor),
+                  color: K.whiteColor,
+                  shape: BoxShape.circle),
             ),
           ),
-          SizedBox(height: 8.h,),
+          SizedBox(
+            height: 8.h,
+          ),
           AutoSizeText(
             labels!,
             style: TextStyle(color: K.blackColor, fontSize: 6.sp),

@@ -13,54 +13,60 @@ import 'package:newapexproject/screens/order_screens/map/controller/map_controll
 
 class MyLocationScreen extends StatelessWidget {
   final _controller = Get.put(MapController());
-  LatLng ?currentLocation ;
+  late final LatLng? currentLocation;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-          appBar: CustomAppBar(
-            label: 'search location ',
-          ),
-          body: Stack(
-              children: [
-
-                Obx(() => (_controller.state == ViewState.busy )
-                      ?   Indicator()
-                      : GoogleMap(
-                    mapType: MapType.normal,
+        child: Scaffold(
+      appBar: CustomAppBar(
+        label: 'search location ',
+      ),
+      body: Stack(
+        children: [
+          Obx(
+            () => (_controller.state == ViewState.busy)
+                ? Indicator()
+                : GoogleMap(
+                    zoomControlsEnabled: false,
+                    //Map widget from google_maps_flutter package
+                    zoomGesturesEnabled: true,
+                    //enable Zoom in, out on map
                     initialCameraPosition: CameraPosition(
-                        target: LatLng(_controller.CurrentLocation!.latitude,_controller.CurrentLocation!.longitude),
-                        // target: LatLng(31.20384501928389,29.88524201888047),
-                      zoom: 19
+                      //innital position in map
+                      target: LatLng(_controller.position!.latitude,
+                          _controller.position!.longitude),
+                      //initial position
+                      zoom: 14.0, //initial zoom level
                     ),
-                    onMapCreated: (GoogleMapController googleMapController) {
-                      _controller.onInit();
+                    mapType: MapType.normal,
+                    //map type
+                    onMapCreated: (controller) {
+                      //method called when map is created
+                      _controller.controller.complete();
+                      // _x.markLocation();
                     },
                     markers: _controller.marker,
                   ),
-                  ),
-                Align(
-                  alignment:Alignment.topCenter,
-                    child:Container(
-                      margin: EdgeInsets.all(11.w),
-                      color: K.whiteColor,
-                      child: TextField(
-                        decoration: InputDecoration(hintText: '   search location...'),
-                      ),
-                    ),  ),
-
-              ],
           ),
-
-        bottomNavigationBar: Container(
-          height: 20,
-          alignment: Alignment.center,
-          child: Text(
-            'lat :${_controller.CurrentLocation!.latitude} ,long:${_controller.CurrentLocation!.longitude}'
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              margin: EdgeInsets.all(11.w),
+              color: K.whiteColor,
+              child: TextField(
+                decoration: InputDecoration(hintText: '   search location...'),
+              ),
+            ),
           ),
-        ),
-          )
-    );
+        ],
+      ),
+      // bottomNavigationBar: Container(
+      //   height: 20,
+      //   alignment: Alignment.center,
+      //   child: Text(
+      //       'lat :${_controller.CurrentLocation!.latitude} ,long:${_controller.CurrentLocation!.longitude}'),
+      // ),
+    ));
   }
 }

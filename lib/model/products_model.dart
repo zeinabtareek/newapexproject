@@ -38,6 +38,18 @@ class ProductModel {
         key: snapshot.id);
   }
 
+  ProductModel.fromJson(Map<dynamic, dynamic> map) {
+    if (map == null) {
+      return;
+    } else {
+      name = map["name"];
+      image = map["image"];
+      price = map["price"];
+      rate = map["rate"];
+
+    }
+  }
+
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     map['image'] = image;

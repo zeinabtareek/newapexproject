@@ -16,17 +16,17 @@ import 'package:newapexproject/screens/product_details/product_details.dart';
 import 'package:newapexproject/screens/product_screen/controller/product_details_controller.dart';
 
 class ProductScreen extends StatelessWidget {
-   ProductScreen({
+  ProductScreen({
     Key? key,
     this.id,
   }) : super(key: key);
-   final cartController = Get.put(CartController());
 
-   final String? id;
+  final String? id;
+
   @override
   Widget build(BuildContext context) {
     final _controller = Get.put(ProductScreenController());
-
+    String? key;
     return Scaffold(
       appBar: CustomAppBar(
         label: 'Products',
@@ -70,14 +70,17 @@ class ProductScreen extends StatelessWidget {
                                 ? K.mainColor
                                 : K.whiteColor,
                             onTap: () {
-                               _controller.selected(index)!=0?
-                              _controller.getDocs(id!,
-                                  HomeScreenController.to.docs[index].key!):
-                                   _controller.getallDocs(id!);
-                              _controller.selected(index);
+                              //  _controller.selected(index)!=0?
                               // _controller.getDocs(id!,
-                              //     HomeScreenController.to.docs[index].key!);
+                              //     HomeScreenController.to.docs[index].key!):
+                              //      _controller.getallDocs(id!);
                               // _controller.selected(index);
+                              _controller.getDocs(id!,
+                                  HomeScreenController.to.docs[index].key!);
+                              _controller.selected(index);
+                              // print(id);
+                              key = HomeScreenController.to.docs[index].key;
+                              // print(HomeScreenController.to.docs[index].key!);
                             },
                           ),
                         ),
@@ -86,46 +89,61 @@ class ProductScreen extends StatelessWidget {
                   ),
                 )),
             Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Obx(
-                  () => _controller.docs.length == 0
-                      ? Indicator()
-                      : GridView.builder(
-                          itemCount: _controller.docs.length,
-                          shrinkWrap: true,
+              padding: const EdgeInsets.all(8.0),
+              child: Obx(
+                () => _controller.docs.length == 0
+                    ? Indicator()
+                    : GridView.builder(
+                        itemCount: _controller.docs.length,
+                        shrinkWrap: true,
                         physics: ClampingScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio: MediaQuery.of(context)
                                     .size
                                     .width /
-                                (MediaQuery.of(context).size.height / 1.5.h),
+                                (MediaQuery.of(context).size.height / 1.3.h),
                             crossAxisCount: 2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 10),
-                        itemBuilder: (ctx, index) => ProductCard(
-                          onTap: () {
-                            Get.to(() => ProductDetails(
-                                  productModel: _controller.docs[index],
-                                ));
-                          },
-                          rate: _controller.docs[index].rate,
-                          inStock: _controller.docs[index].inStock,
-                          discount: _controller.docs[index].discount,
-                          price: _controller.docs[index].price,
-                          text: _controller.docs[index].name,
-                          image: _controller.docs[index].image,
-                          addToCart: () {
-                            cartController.addToCart(CartProductModel(
-                              name:_controller.docs[index].name,
-                              image:_controller.docs[index].image,
-                              price: _controller.docs[index].price,
-                              productId:_controller.docs[index].key,
-                              // rate: productDetailsModel.rate,
-                              quantity: 1,
-                            ));
-                          },
-                        ),
-                      ),
+                        itemBuilder: (ctx, index) => Obx(
+                              () => ProductCard(
+                                icon: Icons.favorite,
+                                colorIcon: _controller
+                                        .favourite[_controller.docs[index].key]!
+                                    ? Colors.red
+                                    : K.grayColor,
+                                favIcon: () {
+                                  print(key);
+                                  _controller.changeFavourite(
+                                      id!,
+                                      key!,
+                                      _controller.docs[index].key!,
+                                      _controller.favourite[
+                                          _controller.docs[index].key!]!);
+                                },
+                                onTap: () {
+                                  Get.to(() => ProductDetails(
+                                        productModel: _controller.docs[index],
+                                      ));
+                                },
+                                rate: _controller.docs[index].rate,
+                                inStock: _controller.docs[index].inStock,
+                                discount: _controller.docs[index].discount,
+                                price: _controller.docs[index].price,
+                                text: _controller.docs[index].name,
+                                image: _controller.docs[index].image,
+                                addToCart: () {
+                                  // cartController.addToCart(CartProductModel(
+                                  //   name:_controller.docs[index].name,
+                                  //   image:_controller.docs[index].image,
+                                  //   price: _controller.docs[index].price,
+                                  //   productId:_controller.docs[index].key,
+                                  //   // rate: productDetailsModel.rate,
+                                  //   quantity: 1,
+                                  // ));
+                                },
+                              ),
+                            )),
               ),
             ),
           ],

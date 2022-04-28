@@ -7,23 +7,14 @@ class ProductScreenController extends BaseController {
   final _services = CategoryServices();
   final docs = <ProductModel>[].obs;
 
-  final List<String> labels = ['see all', 'Bags', 'Women fashion', 'shoes'];
-  final List<String> productsText = [
-    'Classic Hoodie',
-    'Jordan 5 Retro',
-    'Buffalo Aspha Rld',
-    'Fila Bijou -Women Dresses',
-    'adidas Originals Relaxed Risque Lightweight',
-    'Nike Bags -Unisex Bags',
-    'Jordan Flightclub \'91',
-    'Nike Newborn Coverall ',
-    'adidas Originals',
-    ' Jordan Sky - Baby Shoes',
-    'adidas Backpack',
-    'Nike Futura 365 Mini Backpack',
-  ];
+  final favourite = <String, bool>{}.obs;
   final selectedIndex = 0.obs;
   final check = false.obs;
+
+  changeFavourite(String id, String key, String value, bool check) {
+    favourite[value] = !favourite[value]!;
+    _services.setCategoryFavourite(id, key, value, favourite[value]!);
+  }
 
   selected(int index) {
     selectedIndex.value = index;
@@ -35,13 +26,13 @@ class ProductScreenController extends BaseController {
 
   getDocs(String id, String key) async {
     docs.assignAll(await _services.getCategoryDocs(id, key));
+    docs.forEach((element) {
+      favourite.addAll({element.key!: element.inStock!});
+    });
+    print(favourite.toString());
   }
-
-
-
 
   getallDocs(String id) async {
     docs.assignAll(await _services.seeAll(id));
   }
-
 }

@@ -16,12 +16,22 @@ class CategoryServices {
     return data.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
   }
 
+  Future<ProductModel?> setCategoryFavourite(
+      String id, String key, String value, bool check) async {
+    final data = await _store
+        .collection('category')
+        .doc(id)
+        .collection('data')
+        .doc(key)
+        .collection('products')
+        .doc(value)
+        .update({"inStock": check});
+    return null;
+  }
 
-Future<List<ProductModel>> seeAll(String id)async{
-  final data=await _store.collection('category')
-      .doc(id)
-      .collection('data')
-      .get();
-  return data.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+  Future<List<ProductModel>> seeAll(String id) async {
+    final data =
+        await _store.collection('category').doc(id).collection('data').get();
+    return data.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
   }
 }

@@ -32,7 +32,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBarHomeScreen(
         address: "Alex,Egypt",
-
       ),
       backgroundColor: K.whiteColor,
       body: SingleChildScrollView(
